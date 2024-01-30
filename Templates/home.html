@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+    {% block content %}
+        {% for hire in hires %}
+                <div class="shadow card mb-3 mx-auto" style="max-width: 740px;">
+                    <div class="row no-gutters">
+                        <div class="col-md-4 d-flex align-items-center justify-content-center border-right border-bottom">
+                            <img src="{{ url_for('static', filename=hire.profile_picture) }}" class="card-img rounded" alt="man" style="max-width: 70%; max-height: 70%;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                            <h5 class="card-title">{{ hire.name }}</h5>
+                            <p class="card-text"><small class="text-muted">{{ hire.subcategory }}</small></p>
+                            <p class="card-text">{{ hire.description }}</p>
+                            <p class="card-text"><small class="text-muted">{{ hire.experience }} years of experience</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        {% endfor %}
+    {% endblock content %}

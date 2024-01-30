@@ -1,0 +1,8 @@
+body {
+    background-color: rgb(200, 205, 211);
+    margin-top: 100px;
+    padding: 50px;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: #000;
+  }
