@@ -1,6 +1,9 @@
 from flask import Flask, jsonify, render_template
+from forms import RegistrationForm, LoginForm
 
 app = Flask(__name__)
+
+app.config['SECRET_KEY'] = '48df99608259875f92817227bfe26e54'
 
 
 # Dummy data for demonstration purposes
@@ -46,6 +49,16 @@ hires = [
 @app.route('/')
 def home():
     return render_template('home.html', hires=hires)
+
+@app.route('/register')
+def register():
+    form = RegistrationForm
+    return render_template('register.html', title='Register', form=form)
+
+@app.route('/login')
+def login():
+    form = LoginForm
+    return render_template('login.html', title='Login', form=form)
 
 
 # Endpoint to fetch all categories with subcategories

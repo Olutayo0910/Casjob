@@ -1,6 +1,23 @@
 {% extends 'base.html' %}
     {% block content %}
+    <div class="input-group mb-3 mx-auto" style="max-width: 740px;">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Construction and Trades</a>
+            <a class="dropdown-item" href="#">Information Technology</a>
+            <a class="dropdown-item" href="#">Food Service</a>
+            <div role="separator" class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">more...</a>
+          </div>
+        </div>
+        <input type="text" class="form-control" aria-label="Text input with dropdown button">
+        <div class="input-group-append">
+            <span class="input-group-text" id="basic-addon2"><i class="fa-solid fa-magnifying-glass"></i></span>
+        </div>
         {% for hire in hires %}
+        
+          </div>
                 <div class="shadow card mb-3 mx-auto" style="max-width: 740px;">
                     <div class="row no-gutters">
                         <div class="col-md-4 d-flex align-items-center justify-content-center border-right border-bottom">
