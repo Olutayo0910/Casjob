@@ -1,2 +1,3 @@
 # Python import cache
 __pycache__/
+venv/
