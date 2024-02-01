@@ -12,18 +12,18 @@
 <body>
     <nav class="navbar navbar-expand-lg fixed-top bg-light navbar-light">
         <div class="container">
-          <a class="navbar-brand" href="#"
+          <a class="navbar-brand" href="/"
             ><h2>Casjob</h2></a>
           <button
             class="navbar-toggler"
             type="button"
-            data-mdb-toggle="collapse"
-            data-mdb-target="#navbarSupportedContent"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent"
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <i class="fas fa-bars"></i>
+            <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto align-items-center">
@@ -35,6 +35,9 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link mx-2" href="#!"><i class="fas fa-heart pe-2"></i>Jobs</a>
+              </li>
+              <li class="nav-item ms-3">
+                <a class="btn btn-black btn-rounded" href="{{ url_for('register') }}">Register</a>
               </li>
               <li class="nav-item ms-3">
                 <a class="btn btn-black btn-rounded" href="#!">Sign in</a>
