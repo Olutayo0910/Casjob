@@ -1,10 +1,7 @@
-from flask import Flask, jsonify, render_template, url_for, redirect, flash, redirect
-from forms import RegistrationForm, LoginForm
-
-app = Flask(__name__)
-
-app.config['SECRET_KEY'] = '48df99608259875f92817227bfe26e54'
-
+from flask import jsonify, render_template, url_for, redirect, flash, redirect
+from casjob import app
+from casjob.forms import RegistrationForm, LoginForm
+from casjob.models import User, Post
 
 # Dummy data for demonstration purposes
 categories = [
@@ -113,6 +110,3 @@ def get_hire(hire_id):
         return jsonify(hire)
     else:
         return jsonify({"error": "Hire not found"}), 404
-
-if __name__ == '__main__':
-    app.run(debug=True)
