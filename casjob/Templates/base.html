@@ -35,12 +35,19 @@
               <li class="nav-item">
                 <a class="nav-link mx-2" href="#!"><i class="fas fa-heart pe-2"></i>Jobs</a>
               </li>
+              {% if current_user.is_authenticated %}
               <li class="nav-item ms-3">
+                <a class="btn btn-black btn-rounded" href="{{ url_for('account') }}">Account</a>
+                <a class="btn btn-black btn-rounded" href="{{ url_for('logout') }}">Sign Out</a>
+                </li>
+                {% else %}
+                <li>
                 <a class="btn btn-black btn-rounded" href="{{ url_for('register') }}">Register</a>
               </li>
               <li class="nav-item ms-3">
                 <a class="btn btn-black btn-rounded" href="{{ url_for('login') }}">Sign in</a>
               </li>
+              {% endif %}
             </ul>
           </div>
         </div>

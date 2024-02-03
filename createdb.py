@@ -1,9 +1,16 @@
-# your_script.py
-
 from casjob import app, db
-from casjob.models import User, Post
+from casjob.models import User
 
-# Use app context to create the database tables
-with app.app_context():
-    user = User.query.all()
-    print(user)
+def print_all_users():
+    # Use app context to work with the database
+    with app.app_context():
+        # Query all users
+        users = User.query.all()
+
+        # Print each user
+        for user in users:
+            print(user)
+
+if __name__ == "__main__":
+    # Call the function to print all users
+    print_all_users()
