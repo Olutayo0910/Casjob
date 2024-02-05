@@ -6,32 +6,6 @@
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Join Today</legend>
                 <div class="form-group">
-                    {{ form.firstname.label(class="form-control-label") }}
-                    {% if form.firstname.errors %}
-                        {{ form.firstname(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.firstname.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.firstname(class="form-control form-control-lg") }}
-                    {% endif %}
-                </div>
-                <div class="form-group">
-                    {{ form.lastname.label(class="form-control-label") }}
-                    {% if form.lastname.errors %}
-                        {{ form.lastname(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.lastname.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.lastname(class="form-control form-control-lg") }}
-                    {% endif %}
-                </div>
-                <div class="form-group">
                     {{ form.username.label(class="form-control-label") }}
                     {% if form.username.errors %}
                         {{ form.username(class="form-control form-control-lg is-invalid") }}
@@ -55,19 +29,6 @@
                         </div>
                     {% else %}
                         {{ form.email(class="form-control form-control-lg") }}
-                    {% endif %}
-                </div>
-                <div class="form-group">
-                    {{ form.phone_number.label(class="form-control-label") }}
-                    {% if form.phone_number.errors %}
-                        {{ form.phone_number(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.phone_number.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.phone_number(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
                 <div class="form-group">
@@ -107,4 +68,5 @@
             Already Have An Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
         </small>
     </div>
+
 {% endblock content %}

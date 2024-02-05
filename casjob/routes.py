@@ -3,7 +3,7 @@ import secrets
 from PIL import Image
 from flask import jsonify, render_template, url_for, redirect, flash, redirect, request
 from casjob import app, db, bcrypt
-from casjob.forms import RegistrationForm, LoginForm, UpdateAccountForm
+from casjob.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostJobForm
 from casjob.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -59,7 +59,7 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user = User(firstname=form.firstname.data, lastname=form.lastname.data, username=form.username.data, email=form.email.data, phone_number=form.phone_number.data, password=hashed_password)
+        user = User(username=form.username.data, email=form.email.data, password=hashed_password)
         db.session.add(user)
         db.session.commit()
         flash(f'Account { form.username.data } Created Succesfully, you can now log in!', 'success')
@@ -116,13 +116,27 @@ def account():
         flash('Your account has been updated!', 'success')
         return redirect(url_for('account'))
     elif request.method == 'GET':
-        form.firstname.data = current_user.firstname
-        form.lastname.data = current_user.lastname
         form.username.data = current_user.username
         form.email.data = current_user.email
-        form.phone_number.data = current_user.phone_number
     image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
     return render_template('account.html', title='Account', image_file=image_file, form=form)
+
+@app.route('/post/new', methods=['GET', 'POST'])
+@login_required
+def new_job_post():
+    form = PostJobForm()
+    if form.validate_on_submit():
+        post = Post(title=form.title.data, content=form.content.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash('Your job has been created!', 'success')
+        return redirect(url_for('job_tank'))
+    return render_template('create_job.html', title='Post Jobs', form=form)
+
+@app.route('/jobs')
+def job_tank():
+    posts = Post.query.all()
+    return render_template('job_tank.html', posts=posts)
 
 # Endpoint to fetch all categories with subcategories
 @app.route('/categories', methods=['GET'])

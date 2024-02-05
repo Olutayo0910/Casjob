@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+{% for post in posts %}
+
+    <article class="col-lg-12 ">
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="media mb-3">
+                    <img src="{{ url_for('static', filename='profile_pics/' + post.author.image_file)}}" class="rounded-circle" width="50" height="50" alt="{{ post.author.username }}">
+                    <div class="media-body ml-3">
+                        <div class="article-metadata">
+                            <a class="mr-2" href="#">{{ post.author.username }}</a>
+                            <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+                        </div>
+                        <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+                        <p class="article-content">{{ post.content }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    {% endfor %}
+{% endblock content %}
