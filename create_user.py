@@ -1,20 +1,25 @@
 from casjob import app, db
 from casjob.models import User
 
-def create_tables():
+def recreate_tables():
     # Use app context to work with the database
     with app.app_context():
+        # Drop existing tables
+        db.drop_all()
+
         # Create tables
         db.create_all()
 
-        # Your user creation logic
+        # Create a new user
         new_user = User(
             firstname='John',
             lastname='Doe',
             username='john_doe',
             phone_number='1234567890',
             email='john.doe@example.com',
-            password='your_password_here'
+            password='your_password_here',
+            bio='Some bio information here'
+            
         )
 
         # Add user to the session
@@ -26,4 +31,4 @@ def create_tables():
     print('Successful')
 
 # Run the script
-create_tables()
+recreate_tables()

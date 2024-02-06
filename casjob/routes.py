@@ -1,10 +1,12 @@
 import os
 import secrets
 from PIL import Image
-from flask import jsonify, render_template, url_for, redirect, flash, redirect, request
+from flask import jsonify, render_template, url_for, redirect, flash, redirect, request, abort
 from casjob import app, db, bcrypt
-from casjob.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostJobForm
+from casjob.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostJobForm, SKILLS
 from casjob.models import User, Post
+from random import shuffle
+from datetime import datetime
 from flask_login import login_user, current_user, logout_user, login_required
 
 # Dummy data for demonstration purposes
@@ -50,7 +52,26 @@ hires = [
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template('home.html', hires=hires)
+    return render_template('home.html')
+
+@app.route('/')
+@app.route('/hires')
+def hire():
+    skills = [
+    'Mechanic', 'Electrician', 'Plumber', 'Carpenter', 'Welder',
+    'Cleaner', 'Janitor', 'Housekeeper', 'Pool Cleaner',
+    'Computer Technician', 'IT Support', 'Appliance Repair Technician',
+    'Delivery Driver', 'Courier', 'Taxi/Uber Driver',
+    'Event Staff', 'Caterer', 'Bartender', 'Waitstaff',
+    'Gardener', 'Landscaper', 'Pool Maintenance',
+    'Babysitter', 'Pet Sitter', 'Dog Walker',
+    'Fitness Trainer', 'Yoga Instructor', 'Massage Therapist',
+    'Graphic Designer', 'Photographer', 'Writer',
+    'Retail Sales Associate', 'Customer Service Representative'
+]
+    hires = User.query.all()
+    shuffle(hires)
+    return render_template('hires.html', title='Hires', hires=hires, skills=skills)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -112,6 +133,8 @@ def account():
         current_user.username = form.username.data
         current_user.email = form.email.data
         current_user.phone_number = form.phone_number.data
+        current_user.skill_type = form.skill_type.data
+        current_user.bio = form.bio.data
         db.session.commit()
         flash('Your account has been updated!', 'success')
         return redirect(url_for('account'))
@@ -126,16 +149,54 @@ def account():
 def new_job_post():
     form = PostJobForm()
     if form.validate_on_submit():
-        post = Post(title=form.title.data, content=form.content.data, author=current_user)
+        post = Post(title=form.title.data, job_description=form.job_description.data, skill_type=form.skill_type.data, author=current_user)
         db.session.add(post)
         db.session.commit()
         flash('Your job has been created!', 'success')
         return redirect(url_for('job_tank'))
-    return render_template('create_job.html', title='Post Jobs', form=form)
+    return render_template('create_job.html', title='Post Jobs', form=form, legend='New Job Post')
 
+@app.route("/post/<int:post_id>")
+def post(post_id):
+    post = Post.query.get_or_404(post_id)
+    return render_template('job.html', title=post.title, post=post)
+
+@app.route("/post/<int:post_id>/update", methods=['GET', 'POST'])
+@login_required
+def update_job_post(post_id):
+    post = Post.query.get_or_404(post_id)
+    if post.author != current_user:
+        abort(403)
+    form = PostJobForm()
+    if form.validate_on_submit():
+        post.title = form.title.data
+        post.skill_type = request.form['skill_type']
+        post.job_description = form.job_description.data
+        db.session.commit()
+        flash('Your job has been updated', 'success')
+        return redirect(url_for('post', post_id=post.id))
+    elif request.method == 'GET':
+        form.title.data = post.title
+        form.skill_type.data = post.skill_type
+        form.job_description.data = post.job_description
+    return render_template('create_job.html', title='Update Job', form=form, legend='Update Job Post')
+
+# delete job post
+@app.route("/post/<int:post_id>/delete", methods=['POST'])
+@login_required
+def delete_job_post(post_id):
+    post = Post.query.get_or_404(post_id)
+    if post.author != current_user:
+        abort(403)
+    db.session.delete(post)
+    db.session.commit()
+    flash('Your job has been deleted', 'success')
+    return redirect(url_for('job_tank'))
+
+# view all the job post
 @app.route('/jobs')
 def job_tank():
-    posts = Post.query.all()
+    posts = Post.query.order_by(Post.date_posted.desc()).all()
     return render_template('job_tank.html', posts=posts)
 
 # Endpoint to fetch all categories with subcategories

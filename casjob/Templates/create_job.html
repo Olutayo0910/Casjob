@@ -4,7 +4,7 @@
     <form method="POST" action="">
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4">New Job Post</legend>
+            <legend class="border-bottom mb-4">{{ legend }}</legend>
             <div class="form-group">
                 {{ form.title.label(class="form-control-label") }}
                 {% if form.title.errors %}
@@ -19,16 +19,20 @@
                 {% endif %}
             </div>
             <div class="form-group">
-                {{ form.content.label(class="form-control-label") }}
-                {% if form.content.errors %}
-                    {{ form.content(class="form-control form-control-lg is-invalid") }}
+                {{ form.skill_type.label(class="form-control-label") }}
+                {{ form.skill_type(class="form-control form-control-lg") }}
+            </div>
+            <div class="form-group">
+                {{ form.job_description.label(class="form-control-label") }}
+                {% if form.job_description.errors %}
+                    {{ form.job_description(class="form-control form-control-lg is-invalid") }}
                     <div class="invalid-feedback">
-                        {% for error in form.content.errors %}
+                        {% for error in form.job_description.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
                 {% else %}
-                    {{ form.content(class="form-control form-control-lg") }}
+                    {{ form.job_description(class="form-control form-control-lg") }}
                 {% endif %}
             </div>
         </fieldset>
