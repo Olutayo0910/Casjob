@@ -1,24 +1,41 @@
 {% extends "base.html" %}
 {% block content %}
-{% for post in posts %}
+{% for post in posts.items %}
 
-    <article class="col-lg-12 ">
+    <article class="shadow card mb-3 mx-auto" style="max-width: 740px;">
         <div class="card mb-4">
             <div class="card-body">
                 <div class="media mb-3">
                     <img src="{{ url_for('static', filename='profile_pics/' + post.author.image_file)}}" class="rounded-circle" width="50" height="50" alt="{{ post.author.username }}">
                     <div class="media-body ml-3">
                         <div class="article-metadata">
-                            <a class="mr-2" href="#">{{ post.author.username }}</a>
+                            <a class="mr-2" href="{{ url_for('user_job_posts', username=post.author.username) }}">{{ post.author.username }}</a>
                             <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
                         </div>
                         <h2><a class="article-title" href="#">{{ post.skill_type }}</a></h2>
                         <h4><a class="article-title" href="{{ url_for('post', post_id=post.id)}}">{{ post.title }}</a></h4>
                         <p class="article-content">{{ post.job_description }}</p>
+                        
+                        {% if post.author != current_user %}
+                            <div class="form-group text-right">
+                                <a href="#" class="btn btn-outline-info custom-submit-btn">Apply</a>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
         </div>
     </article>
-    {% endfor %}
+{% endfor %}
+{% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+    {% if page_num %}
+        {% if posts.page == page_num %}  
+            <a class="btn btn-info mb-4" href="{{ url_for('job_tank', page=page_num) }}">{{ page_num }}</a>
+        {% else %}
+            <a class="btn btn-outline-info mb-4" href="{{ url_for('job_tank', page=page_num) }}">{{ page_num }}</a>
+        {% endif %}
+    {% else %}
+        ...
+    {% endif %}
+{% endfor %}   
 {% endblock content %}

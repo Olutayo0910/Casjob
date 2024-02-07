@@ -54,9 +54,10 @@ hires = [
 def home():
     return render_template('home.html')
 
-@app.route('/')
 @app.route('/hires')
 def hire():
+    page = request.args.get('page', 1, type=int)
+    per_page = 5
     skills = [
     'Mechanic', 'Electrician', 'Plumber', 'Carpenter', 'Welder',
     'Cleaner', 'Janitor', 'Housekeeper', 'Pool Cleaner',
@@ -69,14 +70,15 @@ def hire():
     'Graphic Designer', 'Photographer', 'Writer',
     'Retail Sales Associate', 'Customer Service Representative'
 ]
-    hires = User.query.all()
-    shuffle(hires)
+    hires = User.query.paginate(page=page, per_page=per_page)
+    shuffled_items = hires.items
+    shuffle(shuffled_items)
     return render_template('hires.html', title='Hires', hires=hires, skills=skills)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
-        return redirect(url_for('home'))
+        return redirect(url_for('job_tank'))
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
@@ -90,14 +92,14 @@ def register():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('home'))
+        return redirect(url_for('job_tank'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
             next_page = request.args.get('next')
-            return redirect(next_page) if next_page else redirect(url_for('home'))
+            return redirect(next_page) if next_page else redirect(url_for('job_tank'))
         else:
             flash(f'Login Unsuccesfully. Please check email and password!', 'danger')
     return render_template('login.html', title='Login', form=form)
@@ -196,8 +198,19 @@ def delete_job_post(post_id):
 # view all the job post
 @app.route('/jobs')
 def job_tank():
-    posts = Post.query.order_by(Post.date_posted.desc()).all()
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=5)
     return render_template('job_tank.html', posts=posts)
+
+@app.route('/user/<username>')
+def user_job_posts(username):
+    page = request.args.get('page', 1, type=int)
+    user = User.query.filter_by(username=username).first_or_404()
+    posts = Post.query.filter_by(author=user).order_by(Post.date_posted.desc()).paginate(page=page, per_page=5)
+    return render_template('user_job_posts.html', posts=posts, user=user)
+
+
+
 
 # Endpoint to fetch all categories with subcategories
 @app.route('/categories', methods=['GET'])
