@@ -25,7 +25,12 @@
                             <h5 class="card-title">{{ hire.firstname }} {{ hire.lastname }}</h5>
                             <p class="card-text"><small class="text-muted">{{ hire.skill_type }}</small></p>
                             <p class="card-text">{{ hire.bio }}</p>
-                            <p class="card-text"><small class="text-muted">{{ hire.experience }} years of experience</small></p>
+                            <p class="card-text"><small class="text-muted">{{ hire.years_of_experience }} years of experience</small></p>
+                            {% if hire != current_user %}
+                            <div class="form-group text-right">
+                                <a href="#" class="btn btn-outline-info custom-submit-btn">Hire Me</a>
+                            </div>
+                            {% endif %}
                             </div>
                         </div>
                     </div>

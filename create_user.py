@@ -1,34 +1,44 @@
 from casjob import app, db
 from casjob.models import User
+from werkzeug.security import generate_password_hash
 
-def recreate_tables():
-    # Use app context to work with the database
-    with app.app_context():
-        # Drop existing tables
-        db.drop_all()
+def create_users():
+    try:
+        # Use app context to work with the database
+        with app.app_context():
+            # Create users
+            for i in range(1, 21):
+                username = f"user{i}"
+                email = f"user{i}@example.com"
+                firstname = f"User{i}"
+                lastname = "Doe"
+                phone_number = f"1234567{i:02d}"
+                skill_type = "Electrician"  # You can change this as needed
+                bio = f"Experienced electrician with {i} years of experience."
+                password_hash = generate_password_hash("12345")
 
-        # Create tables
-        db.create_all()
+                # Create a new user
+                new_user = User(
+                    username=username,
+                    email=email,
+                    password=password_hash,
+                    firstname=firstname,
+                    lastname=lastname,
+                    phone_number=phone_number,
+                    skill_type=skill_type,
+                    bio=bio,
+                    years_of_experience=i
+                )
 
-        # Create a new user
-        new_user = User(
-            firstname='John',
-            lastname='Doe',
-            username='john_doe',
-            phone_number='1234567890',
-            email='john.doe@example.com',
-            password='your_password_here',
-            bio='Some bio information here'
-            
-        )
+                # Add user to the session
+                db.session.add(new_user)
 
-        # Add user to the session
-        db.session.add(new_user)
+            # Commit changes to the database
+            db.session.commit()
 
-        # Commit changes to the database
-        db.session.commit()
-
-    print('Successful')
+        print('Users created successfully.')
+    except Exception as e:
+        print(f'An error occurred: {e}')
 
 # Run the script
-recreate_tables()
+create_users()

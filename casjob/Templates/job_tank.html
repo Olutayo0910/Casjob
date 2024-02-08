@@ -18,7 +18,7 @@
                         
                         {% if post.author != current_user %}
                             <div class="form-group text-right">
-                                <a href="#" class="btn btn-outline-info custom-submit-btn">Apply</a>
+                                <a href="{{ url_for('apply', post_id=post.id)}}" class="btn btn-outline-info custom-submit-btn">Apply</a>
                             </div>
                         {% endif %}
                     </div>

@@ -90,4 +90,8 @@ class PostJobForm(FlaskForm):
     job_description = TextAreaField('Job Description', validators=[DataRequired()])
     submit = SubmitField('Post') 
 
+class ApplicationForm(FlaskForm):
+    message = TextAreaField('Message', validators=[DataRequired()])
+    submit = SubmitField('Submit Application')
+
 
