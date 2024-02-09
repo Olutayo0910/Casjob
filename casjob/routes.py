@@ -9,13 +9,14 @@ from random import shuffle
 from datetime import datetime
 from flask_login import login_user, current_user, logout_user, login_required
 from flask_mail import Message
+from uuid import uuid4
 from . import mail
 
 
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template('home.html')
+    return render_template('home.html', cache_id=uuid4())
 
 @app.route('/hires')
 def hire():
