@@ -17,6 +17,13 @@ Casjob is a specialized platform designed to facilitate the hiring process for l
 - **Specialized Categories**: Casjob categorizes job listings by industry and skillset, making it simple for job seekers to find opportunities that align with their expertise and preferences.
 ![hireee](https://github.com/Olutayo0910/Casjob/assets/121323757/4b970a25-5153-47ca-97aa-1937bb3a4edc)
 
+## Tools Used
+
+- **Flask**: Flask, a lightweight Python web framework, is used for building the backend of Casjob.
+- **SQLite**: Casjob utilizes SQLite as its relational database management system.
+- **HTML/CSS**: HTML and CSS are used for structuring and styling the web pages in Casjob's frontend.
+- **Bootstrap**: Bootstrap is employed to enhance the design and responsiveness of Casjob's user interface.
+
 ## Installation
 
 To get started with Casjob, simply clone this repository to your local machine:
