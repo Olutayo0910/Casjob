@@ -1,37 +1,10 @@
 {% extends 'base.html' %} {% block content %}
-<section id="hero">
+<section id="hero" style="background-image: url('static/images/2a.jpg');">
   <div class="hero-content" data-aos="fade-up">
     <h2>Connecting <span>casual job supply </span>with demand!</h2>
     <div>
       <a href="{{ url_for('hire') }}" class="btn-get-started scrollto">Hire</a>
-      <a href="{{ url_for('job_tank') }}" class="btn-projects scrollto"
-        >Get Hired</a
-      >
-    </div>
-  </div>
-
-  <div class="hero-slider swiper">
-    <div class="swiper-wrapper">
-      <div
-        class="swiper-slide"
-        style="background-image: url('assets/img/hero-carousel/1.jpg')"
-      ></div>
-      <div
-        class="swiper-slide"
-        style="background-image: url('assets/img/hero-carousel/2.jpg')"
-      ></div>
-      <div
-        class="swiper-slide"
-        style="background-image: url('assets/img/hero-carousel/3.jpg')"
-      ></div>
-      <div
-        class="swiper-slide"
-        style="background-image: url('assets/img/hero-carousel/4.jpg')"
-      ></div>
-      <div
-        class="swiper-slide"
-        style="background-image: url('assets/img/hero-carousel/5.jpg')"
-      ></div>
+      <a href="{{ url_for('job_tank') }}" class="btn-projects scrollto">Get Hired</a>
     </div>
   </div>
 </section>
@@ -42,32 +15,64 @@
     <div class="container" data-aos="fade-up">
       <div class="row">
         <div class="col-lg-6 about-img">
-          <img src="assets/img/about-img.jpg" alt="" />
+          <img src="static/images/a.jpg" alt="" />
         </div>
 
         <div class="col-lg-6 content">
-          <h2>Lorem ipsum dolor sit amet, consectetur adipiscing</h2>
-          <h3>
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-            officia deserunt mollit anim id est laborum.
-          </h3>
+          <h2>About Us</h2>
+          <p><h3>
+            Welcome to Casjob – your premier destination for
+            connecting individuals seeking casual employment
+            with businesses looking to hire for short-term positions.
+            </h3></p>
+            <p><h3>
+              At Casjob, we specialize in casual jobs across a variety
+              of industries, including mechanics, hairdressers, web
+              developers, and more. Whether you're a skilled professional
+              looking for flexible work or a business in need of temporary
+              assistance, we've got you covered.
+            </h3></p>
+          
+            <p><h3>
+          Our platform offers a range of features designed to simplify
+          the casual job search process:
+          </h3></p>
 
           <ul>
             <li>
-              <i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip
-              ex ea commodo consequat.
+              <i class="bi bi-check-circle"></i><b>Wide Range of Opportunities:</b>
+              Explore a diverse selection of casual job listings, from short-term
+              gigs to freelance projects.
             </li>
             <li>
-              <i class="bi bi-check-circle"></i> Duis aute irure dolor in
-              reprehenderit in voluptate velit.
+              <i class="bi bi-check-circle"></i><b>Quick and Easy Application:</b>
+              Apply to casual jobs directly through our platform with just a few clicks,
+              making the process seamless and efficient.
             </li>
             <li>
-              <i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip
-              ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-              voluptate trideta storacalaperda mastiro dolore eu fugiat nulla
-              pariatur.
+              <i class="bi bi-check-circle"></i><b>Post Your Skills:</b>
+              Showcase your talents, skills, and availability on your personalized profile,
+              attracting potential employers seeking your expertise.
+            </li>
+            <li>
+              <i class="bi bi-check-circle"></i><b>Connect with Employers:</b>
+              Communicate directly with businesses seeking casual workers, facilitating
+              quick and convenient connections.
+            </li>
+            <li>
+              <i class="bi bi-check-circle"></i><b>User-Friendly Interface:</b>
+              Our intuitive platform ensures a hassle-free experience, allowing users to
+              navigate and search for jobs effortlessly.
             </li>
           </ul>
+          <p>
+            Casjob is committed to empowering individuals to find casual employment
+            opportunities that fit their lifestyle and schedule. Likewise, we strive to assist
+            businesses in finding qualified candidates to meet their short-term staffing needs.<br>
+
+            Join the Casjob community today and discover the perfect casual job or
+            temporary worker for your needs!
+          </p>
         </div>
       </div>
     </div>

@@ -1,6 +1,8 @@
 from datetime import datetime
 from flask_login import UserMixin
-from casjob import db, login_manager
+from casjob import db, login_manager, app
+from itsdangerous import URLSafeTimedSerializer as Serializer
+from flask import current_app
 
 
 @login_manager.user_loader
@@ -22,6 +24,19 @@ class User(db.Model, UserMixin):
     posts = db.relationship('Post', backref='author', lazy=True)
     applications = db.relationship('JobApplication', backref='applicant', lazy=True)
 
+    def get_reset_token(user_id):
+        s = Serializer(app.config['SECRET_KEY'])
+        return s.dumps({'user_id': str(user_id)})
+    
+    @staticmethod
+    def verify_reset_token(token):
+        s = Serializer(current_app.config['SECRET_KEY'])
+        try:
+            data = s.loads(token)
+            user_id = data.get('user_id')
+            return User.query.get(user_id)
+        except:
+            return None
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
 
@@ -32,6 +47,7 @@ class Post(db.Model):
     skill_type = db.Column(db.String(50), nullable=False)
     job_description = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"
@@ -45,3 +61,4 @@ class JobApplication(db.Model):
 
     def __repr__(self):
         return f"JobApplication('{self.user_id}', '{self.post_id}', '{self.date_applied}')"
+

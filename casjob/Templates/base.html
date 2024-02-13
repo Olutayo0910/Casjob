@@ -22,114 +22,110 @@
     <title>Casjob</title>
   </head>
   <body>
-    <header class="header">
-      <a href="/" class="logo"><span>Casjob</span></a>
-      <nav class="main-nav">
-        <ul class="main-nav-list">
-          <li>
-            <a href="{{ url_for('hire') }}" class="main-nav-link">Hires</a>
-          </li>
-          <li>
-            <a href="{{ url_for('job_tank') }}" class="main-nav-link"
-              >Job Tank</a
-            >
-          </li>
-          {% if current_user.is_authenticated %}
-          <li>
-            <a href="{{ url_for('new_job_post') }}" class="main-nav-link"
-              >Post a Job</a
-            >
-          </li>
-          <li>
-            <a href="{{ url_for('account') }}" class="main-nav-link">Account</a>
-          </li>
-          <li>
-            <a
-              href="{{ url_for('logout') }}"
-              class="main-nav-link nav-cta logout"
-              >Log Out</a
-            >
-          </li>
-          {% else %}
-          <li>
-            <a href="{{ url_for('login') }}" class="main-nav-link nav-cta"
-              >Sign In</a
-            >
-          </li>
-          <li>
-            <a href="{{ url_for('register') }}" class="main-nav-link nav-cta"
-              >Register</a
-            >
-          </li>
-          {% endif %}
-        </ul>
-      </nav>
-    </header>
+    <!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top bg-light navbar-light">
+  <div class="container">
+    <a href="/" class="logo"><span>Casjob</span></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto align-items-center">
+        <li class="nav-item">
+          <a class="nav-link mx-2" href="{{ url_for('hire') }}">Hires</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mx-2" href="{{ url_for('job_tank') }}">Job Tank</a>
+        </li>
+        {% if current_user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link mx-2" href="{{ url_for('new_job_post') }}">Post a Job</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mx-2" href="{{ url_for('account') }}">Account</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mx-2" href="{{ url_for('logout') }}">Log Out</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link mx-2" href="{{ url_for('login') }}">Sign In</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mx-2" href="{{ url_for('register') }}">Register</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Navbar -->
 
-    <main class="content">
+    <main class="content mx-auto">
       {% with messages = get_flashed_messages(with_categories=true) %} {% if
       messages %} {% for category, message in messages %}
       <div class="alert alert-{{ category }}">{{ message }}</div>
       {% endfor %} {% endif %} {% endwith %} {% block content %}{% endblock %}
     </main>
 
-    <footer class="footer">
-      <div class="container grid--footer">
-        <div class="logo-col">
-          <a href="#" class="footer-logo"><span>Casjob</span></a>
-          <ul class="social-links">
-            <li>
-              <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
-            </li>
-            <li>
-              <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
-            </li>
-            <li>
-              <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
-            </li>
-          </ul>
-          <p class="copyright">
-            Copyright &copy; 2024 by Casjob, Inc. All rights reserved.
-          </p>
-        </div>
-        <div class="address-col">
-          <p class="footer-heading">Contact Us</p>
-          <address class="contacts">
-            <p>Lagos, Nigeria</p>
-            <p>
-              <a href="tel:+23480-123-4567">+234 (0) 80 123 4567</a><br />
-              <a href="mailto:hello@casjob.com">hello@casjob.com</a>
+    <footer class="footer bg-white border-top border-shadow">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <a href="#" class="footer-logo"><span>Casjob</span></a>
+            <ul class="social-links">
+              <li><a href="#"><ion-icon name="logo-instagram"></ion-icon></a></li>
+              <li><a href="#"><ion-icon name="logo-facebook"></ion-icon></a></li>
+              <li><a href="#"><ion-icon name="logo-twitter"></ion-icon></a></li>
+            </ul>
+            <p class="copyright">
+              Copyright &copy; 2024 by Casjob, Inc. All rights reserved.
             </p>
-          </address>
+          </div>
+          <div class="col-md-3">
+            <p class="footer-heading">Contact Us</p>
+            <address class="contacts">
+              <p>Lagos, Nigeria</p>
+              <p><a href="tel:+23480-123-4567">+234 (0) 80 123 4567</a><br />
+              <a href="mailto:hello@casjob.com">hello@casjob.com</a></p>
+            </address>
+          </div>
+          <div class="col-md-2">
+            <p class="footer-heading">Account</p>
+            <ul class="footer-nav">
+              {% if current_user.is_authenticated %}
+              <li><a href="{{ url_for('account') }}">Account</a></li>
+              {% else %}
+              <li><a href="{{ url_for('register') }}">Create Account</a></li>
+              <li><a href="{{ url_for('login') }}">Sign In</a></li>
+              {% endif %}
+            </ul>
+          </div>
+          <div class="col-md-2">
+            <p class="footer-heading">Company</p>
+            <ul class="footer-nav">
+              <li><a href="#">About Casjob</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">
+            <p class="footer-heading">Resources</p>
+            <ul class="footer-nav">
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Privacy & Terms</a></li>
+            </ul>
+          </div>
         </div>
-        <nav class="nav-col">
-          <p class="footer-heading">Account</p>
-          <ul class="footer-nav">
-            {% if current_user.is_authenticated %}
-            <li><a href="{{ url_for('account') }}">Account</a></li>
-            {% else %}
-            <li><a href="{{ url_for('register') }}">Create Account</a></li>
-            <li><a href="{{ url_for('login') }}">Sign In</a></li>
-            {% endif %}
-          </ul>
-        </nav>
-
-        <nav class="nav-col">
-          <p class="footer-heading">Company</p>
-          <ul class="footer-nav">
-            <li><a href="#">About Casjob</a></li>
-          </ul>
-        </nav>
-
-        <nav class="nav-col">
-          <p class="footer-heading">Resources</p>
-          <ul class="footer-nav">
-            <li><a href="#">Help Center</a></li>
-            <li><a href="#">Privacy & Terms</a></li>
-          </ul>
-        </nav>
       </div>
     </footer>
+    
 
     <script
       type="module"

@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="joint">
+<h2 class="display-3 mb-4 text-center">Get a job</h2>
 {% for post in posts.items %}
-
     <article class="shadow card mb-3 mx-auto" style="max-width: 740px;">
         <div class="card mb-4">
             <div class="card-body">
@@ -15,18 +16,26 @@
                         <h2><a class="article-title" href="#">{{ post.skill_type }}</a></h2>
                         <h4><a class="article-title" href="{{ url_for('post', post_id=post.id)}}">{{ post.title }}</a></h4>
                         <p class="article-content">{{ post.job_description }}</p>
-                        
-                        {% if post.author != current_user %}
-                            <div class="form-group text-right">
-                                <a href="{{ url_for('apply', post_id=post.id)}}" class="btn btn-outline-info custom-submit-btn">Apply</a>
-                            </div>
+                        {% if current_user.is_authenticated %}
+                            {% if post.author != current_user %}
+                                <div class="form-group text-right">
+                                    <a href="https://wa.me/{{ user_phone_numbers[post.author.id] }}" class="btn btn-outline-info custom-submit-btn" target="_blank">Apply</a>
+                                </div>
+                            {% endif %}
+                        {% else %}
+                        <div class="alert alert-warning" role="alert">
+                            You must <a href="{{ url_for('login') }}" class="alert-link">login</a> to apply for this job.
+                        </div>
                         {% endif %}
                     </div>
                 </div>
             </div>
         </div>
     </article>
+
 {% endfor %}
+
+<div class="row col-md-6 mx-auto">
 {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
     {% if page_num %}
         {% if posts.page == page_num %}  
@@ -37,5 +46,7 @@
     {% else %}
         ...
     {% endif %}
-{% endfor %}   
+{% endfor %}
+</div>
+</div>
 {% endblock content %}

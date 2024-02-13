@@ -2,15 +2,14 @@ import os
 import secrets
 from PIL import Image
 from flask import jsonify, render_template, url_for, redirect, flash, redirect, request, abort
-from casjob import app, db, bcrypt
-from casjob.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostJobForm, ApplicationForm
+from casjob import app, db, bcrypt, mail
+from casjob.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostJobForm, ApplicationForm, RequestResetForm, ResetPasswordForm
 from casjob.models import User, Post, JobApplication
 from random import shuffle
 from datetime import datetime
 from flask_login import login_user, current_user, logout_user, login_required
 from flask_mail import Message
 from uuid import uuid4
-from . import mail
 
 
 @app.route('/')
@@ -164,7 +163,15 @@ def delete_job_post(post_id):
 def job_tank():
     page = request.args.get('page', 1, type=int)
     posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=5)
-    return render_template('job_tank.html', posts=posts)
+    user_ids = [post.user_id for post in posts.items]
+    users = User.query.filter(User.id.in_(user_ids)).all()
+    user_phone_numbers = {user.id: user.phone_number for user in users}
+    return render_template('job_tank.html', posts=posts, user_phone_numbers=user_phone_numbers)
+
+@app.route('/apply/<int:post_id>')
+def apply(post_id):
+    # Your view logic here
+    pass
 
 @app.route('/user/<username>')
 def user_job_posts(username):
@@ -173,26 +180,46 @@ def user_job_posts(username):
     posts = Post.query.filter_by(author=user).order_by(Post.date_posted.desc()).paginate(page=page, per_page=5)
     return render_template('user_job_posts.html', posts=posts, user=user)
 
-@app.route('/apply/<int:post_id>', methods=['GET', 'POST'])
-@login_required
-def apply(post_id):
-    post = Post.query.get_or_404(post_id)
-    form = ApplicationForm()
-    if form.validate_on_submit():
-        application = JobApplication(message=form.message.data, post_id=post_id, applicant=current_user)
-        db.session.add(application)
-        db.session.commit()
-        flash('Your application has been sent!', 'success')
-        
-        # Send email to the poster
-        if post.author.email:
-            send_email_to_poster(post.author.email, current_user.email)
-        
-        return redirect(url_for('confirmation'))
-    return render_template('apply.html', title='Apply', form=form)
+def send_reset_email(user):
+    token = user.get_reset_token()  # Assuming get_reset_token does not require user_id
+    msg = Message('Password Reset Request',
+                  sender='noreply@demo.com',
+                  recipients=[user.email])
+    
+    msg.body = f'''To reset you password, visit the following link:
+    {url_for('reset_token', token=token, _external=True)}
 
-def send_email_to_poster(poster_email, applicant_email):
-    subject = 'New Application for your Job Post'
-    body = f'Hello,\n\nYou have received a new job application from {applicant_email}.\n\nBest regards,\nYour Application System'
-    msg = Message(subject, recipients=[poster_email], body=body)
+    If you did not make this request, ignore!
+    '''
     mail.send(msg)
+
+
+@app.route("/reset_password", methods=['GET', 'POST'])
+def reset_request():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+    form = RequestResetForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        send_reset_email(user)
+        flash('An email has been sent with instructions to reset your password.', 'info')
+        return redirect(url_for('login'))
+    return render_template('reset_request.html', title='Reset Password', form=form)
+
+
+@app.route("/reset_password/<token>", methods=['GET', 'POST'])
+def reset_token(token):
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+    user = User.verify_reset_token(token)
+    if user is None:
+        flash('That is an invalid or expired token', 'warning')
+        return redirect(url_for('reset_request'))
+    form = ResetPasswordForm()
+    if form.validate_on_submit():
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user.password = hashed_password
+        db.session.commit()
+        flash('Your password has been updated! You are now able to log in', 'success')
+        return redirect(url_for('login'))
+    return render_template('reset_token.html', title='Reset Password', form=form)

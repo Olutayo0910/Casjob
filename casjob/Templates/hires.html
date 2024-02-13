@@ -1,51 +1,65 @@
 {% extends 'base.html' %}
-    {% block content %}
-    <div class="input-group mb-3 mx-auto" style="max-width: 740px;">
-        <div class="input-group-prepend">
-          <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</button>
-          <div class="dropdown-menu" style="max-height: 200px; overflow-y: auto;">
+{% block content %}
+<div class="joint">
+<h2 class="display-3 mb-4 text-center">Hire a Professional</h2>
+<div class="input-group mb-3 mx-auto" style="max-width: 740px;">
+    <div class="input-group-prepend">
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</button>
+        <div class="dropdown-menu" style="max-height: 200px; overflow-y: auto;">
             {% for skill in skills %}
-                <a class="dropdown-item" href="#">{{ skill }}</a>
+            <a class="dropdown-item" href="#">{{ skill }}</a>
             {% endfor %}
-          </div>
-        </div>
-        <input type="text" class="form-control" aria-label="Text input with dropdown button">
-        <div class="input-group-append">
-            <span class="input-group-text" id="basic-addon2"><i class="fa-solid fa-magnifying-glass"></i></span>
         </div>
     </div>
-        {% for hire in hires %}
-                <div class="shadow card mb-3 mx-auto" style="max-width: 740px;">
-                    <div class="row no-gutters">
-                        <div class="col-md-4 d-flex align-items-center justify-content-center border-right border-bottom">
-                            <img src="{{ url_for('static', filename='profile_pics/' + hire.image_file)}}" class="card-img rounded" alt="man" style="max-width: 70%; max-height: 70%;">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                            <h5 class="card-title">{{ hire.firstname }} {{ hire.lastname }}</h5>
-                            <p class="card-text"><small class="text-muted">{{ hire.skill_type }}</small></p>
-                            <p class="card-text">{{ hire.bio }}</p>
-                            <p class="card-text"><small class="text-muted">{{ hire.years_of_experience }} years of experience</small></p>
-                            {% if hire != current_user %}
-                            <div class="form-group text-right">
-                                <a href="#" class="btn btn-outline-info custom-submit-btn">Hire Me</a>
-                            </div>
-                            {% endif %}
-                            </div>
-                        </div>
+    <input type="text" class="form-control" aria-label="Text input with dropdown button">
+    <div class="input-group-append">
+        <span class="input-group-text" id="basic-addon2"><i class="fa-solid fa-magnifying-glass"></i></span>
+    </div>
+</div>
+{% for hire in hires %}
+<div class="shadow card mb-3 mx-auto" style="max-width: 740px;">
+    <div class="row no-gutters">
+        <div class="col-md-4 d-flex align-items-center justify-content-center border-right border-bottom">
+            <img src="{{ url_for('static', filename='profile_pics/' + hire.image_file)}}" class="card-img rounded" alt="man" style="max-width: 70%; max-height: 70%;">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{ hire.firstname }} {{ hire.lastname }}</h5>
+                <p class="card-text"><small class="text-muted">{{ hire.skill_type }}</small></p>
+                <p class="card-text">{{ hire.bio }}</p>
+                <p class="card-text"><small class="text-muted">{{ hire.years_of_experience }} years of experience</small></p>
+                {% if current_user.is_authenticated %}
+                    {% if hire != current_user %}
+                    <div class="form-group text-right">
+                        <a href="https://wa.me/{{ hire.phone_number }}" class="btn btn-outline-info custom-submit-btn" target="_blank">Hire Me</a>
                     </div>
-                </div>
-        {% endfor %}
-        {% for page_num in hires.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
-            {% if page_num %}
-                {% if hires.page == page_num %}  
-                    <a class="btn btn-info mb-4" href="{{ url_for('hire', page=page_num) }}">{{ page_num }}</a>
+                    {% endif %}
                 {% else %}
-                    <a class="btn btn-outline-info mb-4" href="{{ url_for('hire', page=page_num) }}">{{ page_num }}</a>
+                <div class="alert alert-warning" role="alert">
+                    You must <a href="{{ url_for('login') }}" class="alert-link">login</a> to hire this professional.
+                </div>
                 {% endif %}
-            {% else %}
-                ...
-            {% endif %}
-        {% endfor %}  
-    {% endblock content %}
 
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+        <div class="row col-md-6 mx-auto">
+            {% for page_num in hires.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+            <div class="form-group text-center">
+                {% if page_num %}
+                {% if hires.page == page_num %}
+                <a class="btn btn-info mb-4 mx-1" href="{{ url_for('hire', page=page_num) }}">{{ page_num }}</a>
+                {% else %}
+                <a class="btn btn-outline-info mb-4 mx-1" href="{{ url_for('hire', page=page_num) }}">{{ page_num }}</a>
+                {% endif %}
+                {% else %}
+                ...
+                {% endif %}
+            </div>
+            {% endfor %}
+</div>
+</div>
+
+{% endblock content %}

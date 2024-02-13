@@ -1,11 +1,19 @@
-/* body {
-    background-color: rgb(200, 205, 211);
-    margin-top: 100px;
-    padding: 50px;
-}
+
+
 .navbar-light .navbar-nav .nav-link {
     color: #000;
-  } */
+  }
+  body {
+    margin-top: 120px;
+    padding: 0;
+    
+  }
+
+  .joint{
+    padding: 0 50px;
+  }
+
+  /*
 
 * {
   margin: 0;
@@ -35,7 +43,7 @@ body {
   margin: 0 auto;
 }
 
-/* Header */
+/* Header 
 
 .header {
   display: flex;
@@ -45,7 +53,7 @@ body {
   height: 9.6rem;
   padding: 0 23rem;
 }
-
+*/
 .logo span {
   font-size: 3.2rem;
   font-weight: 700;
@@ -53,6 +61,9 @@ body {
   color: #f9a109;
 }
 
+legend {
+  color: #f9a109;
+}
 .logo:hover {
   text-decoration: none;
 }
@@ -110,8 +121,8 @@ body {
 /* Main content */
 
 .content {
-  max-width: 74rem;
-  margin: 4rem auto;
+  padding: 0;
+  
 }
 
 /* Footer */
@@ -231,10 +242,11 @@ section {
 
 #hero {
   width: 100%;
-  height: 60vh;
+  height: 80vh;
   position: relative;
   background: white;
   background-size: cover;
+  background-position: center;
   padding: 0;
 }
 
@@ -250,6 +262,7 @@ section {
   align-items: center;
   flex-direction: column;
   text-align: center;
+  padding: 0;
 }
 
 #hero .hero-content h2 {
@@ -260,7 +273,7 @@ section {
 }
 
 #hero .hero-content h2 span {
-  color: #50d8af;
+  color: #f9a109;
   text-decoration: underline;
 }
 
@@ -295,13 +308,13 @@ section {
 }
 
 #hero .hero-content .btn-projects {
-  background: #50d8af;
-  border: 2px solid #50d8af;
+  background: #f9a109;
+  border: 2px solid #f9a109;
 }
 
 #hero .hero-content .btn-projects:hover {
   background: none;
-  color: #50d8af;
+  color: #f9a109;
 }
 
 #hero .hero-slider {
