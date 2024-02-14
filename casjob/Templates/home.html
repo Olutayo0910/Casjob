@@ -1,13 +1,60 @@
 {% extends 'base.html' %} {% block content %}
 <section id="hero" style="background-image: url('static/images/2a.jpg');">
   <div class="hero-content" data-aos="fade-up">
-    <h2>Connecting <span>casual job supply </span>with demand!</h2>
+    <h2>Welcome to <span>Casjob</span></h2>
+    <p>A place where we connect casual jobs demand and supply</p>
     <div>
       <a href="{{ url_for('hire') }}" class="btn-get-started scrollto">Hire</a>
       <a href="{{ url_for('job_tank') }}" class="btn-projects scrollto">Get Hired</a>
     </div>
   </div>
 </section>
+ <!-- ======= Featured Services Section ======= -->
+ <section id="featured-services" class="featured-services">
+  <div class="container">
+
+    <div class="row">
+      <div class="mx-auto col-lg-8 col-md-12">
+        <div>
+          <img class="img-thumbnail img-fluid" src="static/images/geta.png">
+          <h4 class="title"><a href="">Get a Job</a></h4>
+          <p class="description">Job seekers can browse through the available job
+            listings on Casjob to find positions that match their skills and preferences.
+            The search functionality allows users to filter jobs based on skill type, location,
+            and other criteria, enabling them to find relevant opportunities quickly and easily.</p>
+        </div>
+      </div>
+      <div class="mx-auto col-lg-8 col-md-12 mt-4 mt-md-0">
+        <div>
+          <img class="img-thumbnail img-fluid" src="static/images/hireee.png">
+          <h4 class="title"><a href="">One-Click Hiring</a></h4>
+          <p class="description">Employers have the ability to hire registered
+            hires with just one click. Once they find a suitable candidate, employers
+            can initiate the hiring process directly from the candidate's profile, streamlining
+            the hiring process and saving time.</p>
+        </div>
+      </div>
+      <div class="mx-auto col-lg-8 col-md-12 mt-4 mt-lg-0">
+        <div>
+          <img class="img-thumbnail img-fluid" src="static/images/post.png">
+          <h4 class="title"><a href="">Post a job</a></h4>
+          <p class="description"> Casjob allows users to post job listings for
+            various short-term contract jobs, including roles such as hair stylists,
+            makeup artists, mechanics, event planners, cooks, and more. Users can provide
+            detailed descriptions of the job requirements, including skill type, job title,
+            job description, and contact information.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- End Featured Services Section -->
+
+
+
+
+
 <!-- End Hero Section -->
 <main id="main">
   <!-- ======= About Section ======= -->
@@ -21,7 +68,7 @@
         <div class="col-lg-6 content">
           <h2>About Us</h2>
           <p><h3>
-            Welcome to Casjob – your premier destination for
+            Casjob is your premier destination for
             connecting individuals seeking casual employment
             with businesses looking to hire for short-term positions.
             </h3></p>

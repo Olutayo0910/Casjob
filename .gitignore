@@ -1,3 +1,5 @@
 # Python import cache
 __pycache__/
 venv/
+create_user.py/
+createdb.py/

@@ -76,55 +76,81 @@
       {% endfor %} {% endif %} {% endwith %} {% block content %}{% endblock %}
     </main>
 
-    <footer class="footer bg-white border-top border-shadow">
+    <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
       <div class="container">
         <div class="row">
-          <div class="col-md-3">
-            <a href="#" class="footer-logo"><span>Casjob</span></a>
-            <ul class="social-links">
-              <li><a href="#"><ion-icon name="logo-instagram"></ion-icon></a></li>
-              <li><a href="#"><ion-icon name="logo-facebook"></ion-icon></a></li>
-              <li><a href="#"><ion-icon name="logo-twitter"></ion-icon></a></li>
-            </ul>
-            <p class="copyright">
-              Copyright &copy; 2024 by Casjob, Inc. All rights reserved.
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>Casjob</h3>
+            <p>
+              A108 Adam Street <br>
+              Lagos,<br>
+              Nigeria <br><br>
+              <strong>Phone:</strong> +234 (0) 80 123 4567<br>
+              <strong>Email:</strong> hello@casjob.com<br>
             </p>
           </div>
-          <div class="col-md-3">
-            <p class="footer-heading">Contact Us</p>
-            <address class="contacts">
-              <p>Lagos, Nigeria</p>
-              <p><a href="tel:+23480-123-4567">+234 (0) 80 123 4567</a><br />
-              <a href="mailto:hello@casjob.com">hello@casjob.com</a></p>
-            </address>
-          </div>
-          <div class="col-md-2">
-            <p class="footer-heading">Account</p>
-            <ul class="footer-nav">
-              {% if current_user.is_authenticated %}
-              <li><a href="{{ url_for('account') }}">Account</a></li>
-              {% else %}
-              <li><a href="{{ url_for('register') }}">Create Account</a></li>
-              <li><a href="{{ url_for('login') }}">Sign In</a></li>
-              {% endif %}
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
             </ul>
           </div>
-          <div class="col-md-2">
-            <p class="footer-heading">Company</p>
-            <ul class="footer-nav">
-              <li><a href="#">About Casjob</a></li>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
             </ul>
           </div>
-          <div class="col-md-2">
-            <p class="footer-heading">Resources</p>
-            <ul class="footer-nav">
-              <li><a href="#">Help Center</a></li>
-              <li><a href="#">Privacy & Terms</a></li>
-            </ul>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Join Our Newsletter</h4>
+            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
           </div>
+
         </div>
       </div>
-    </footer>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+      <div class="me-md-auto text-center text-md-start">
+        <div class="copyright">
+          &copy; Copyright <strong><span>Casjob</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/lumia-bootstrap-business-template/ -->
+          Designed by <a href="https://www.olutayoogunlade.com.ng/">Olutayo Ogunlade</a>
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
     
 
     <script
