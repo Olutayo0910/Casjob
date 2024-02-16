@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block content %}
-<section id="hero" style="background-image: url('static/images/2a.jpg');">
+<section id="hero" style="background-image: url('static/images/2a.jpg'); margin-top: -100px;">
   <div class="hero-content" data-aos="fade-up">
     <h2>Welcome to <span>Casjob</span></h2>
     <p>A place where we connect casual jobs demand and supply</p>
@@ -10,13 +10,14 @@
   </div>
 </section>
  <!-- ======= Featured Services Section ======= -->
- <section id="featured-services" class="featured-services">
+<section id="featured-services" class="featured-services">
   <div class="container">
+    <h2 class="text-center features-title mb-4">App Features</h2>
 
-    <div class="row">
-      <div class="mx-auto col-lg-8 col-md-12">
+    <div class="row featured-services-container">
+      <div class="shadow mx-auto mb-4 col-lg-8 col-md-12">
         <div>
-          <img class="img-thumbnail img-fluid" src="static/images/geta.png">
+          <img class="img-thumbnail img-fluid" src="static/images/applyn.png">
           <h4 class="title"><a href="">Get a Job</a></h4>
           <p class="description">Job seekers can browse through the available job
             listings on Casjob to find positions that match their skills and preferences.
@@ -24,9 +25,9 @@
             and other criteria, enabling them to find relevant opportunities quickly and easily.</p>
         </div>
       </div>
-      <div class="mx-auto col-lg-8 col-md-12 mt-4 mt-md-0">
+      <div class="shadow mx-auto mb-4 col-lg-8 col-md-12 mt-4 mt-md-0">
         <div>
-          <img class="img-thumbnail img-fluid" src="static/images/hireee.png">
+          <img class="img-thumbnail img-fluid" src="static/images/hiren.png">
           <h4 class="title"><a href="">One-Click Hiring</a></h4>
           <p class="description">Employers have the ability to hire registered
             hires with just one click. Once they find a suitable candidate, employers
@@ -34,7 +35,7 @@
             the hiring process and saving time.</p>
         </div>
       </div>
-      <div class="mx-auto col-lg-8 col-md-12 mt-4 mt-lg-0">
+      <div class="shadow mx-auto col-lg-8 col-md-12 mt-4 mt-lg-0">
         <div>
           <img class="img-thumbnail img-fluid" src="static/images/post.png">
           <h4 class="title"><a href="">Post a job</a></h4>
@@ -125,5 +126,7 @@
     </div>
   </section>
   <!-- End About Section -->
+
+  
 </main>
 {% endblock content %}

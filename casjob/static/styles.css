@@ -228,6 +228,10 @@ legend {
 h2 a {
   color: #0c2453;
 }
+
+h2 {
+  color: #0c2453;
+}
 h4 a {
   color: #222324;
 }
@@ -523,9 +527,16 @@ section {
   padding: 0;
 }
 
+.features-title {
+  color: #0c2e8a;
+  font-weight: 700;
+  font-size: 36px;
+  font-family: "Raleway", sans-serif;
+}
+
 .featured-services .container {
   padding: 50px;
-  background-color: #f3f4f6;
+  background-color: white
 }
 
 .featured-services .icon-box {
@@ -536,15 +547,6 @@ section {
   border: 1px solid #f9f9fa;
   transition: 0.3s;
   height: 100%;
-}
-
-.featured-services .icon {
-  margin: 0 0 15px 0;
-}
-
-.featured-services .icon i {
-  color: #16df7e;
-  font-size: 36px;
 }
 
 .featured-services .title {
@@ -569,6 +571,11 @@ section {
 .featured-services .description {
   line-height: 24px;
   font-size: 14px;
+}
+
+.featured-services-container {
+  max-height: 600px; /* Adjust the height as needed */
+  overflow-y: auto;
 }
 
 /*--------------------------------------------------------------
@@ -693,7 +700,7 @@ section {
 @media (max-width: 992px) {
 
   #footer .copyright,
-  #footer .credits {
+  #footer {
     float: none;
     -moz-text-align-last: center;
     text-align-last: center;
