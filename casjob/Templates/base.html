@@ -22,72 +22,74 @@
     <title>Casjob</title>
   </head>
   <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top bg-light navbar-light">
-      <div class="container">
-        <a href="/" class="logo"><span>Casjob</span></a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto align-items-center main-nav-list">
-            <li class="nav-item">
-              <a class="main-nav-link mx-2" href="{{ url_for('hire') }}"
-                >Hires</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="main-nav-link mx-2" href="{{ url_for('job_tank') }}"
-                >Job Tank</a
-              >
-            </li>
-            {% if current_user.is_authenticated %}
-            <li class="nav-item">
-              <a class="main-nav-link mx-2" href="{{ url_for('new_job_post') }}"
-                >Post a Job</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="main-nav-link mx-2" href="{{ url_for('account') }}"
-                >Account</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="main-nav-link nav-cta logout mx-2"
-                href="{{ url_for('logout') }}"
-                >Log Out</a
-              >
-            </li>
-            {% else %}
-            <li class="nav-item">
-              <a
-                class="main-nav-link nav-cta mx-2"
-                href="{{ url_for('login') }}"
-                >Sign In</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="main-nav-link nav-cta mx-2"
-                href="{{ url_for('register') }}"
-                >Register</a
-              >
-            </li>
-            {% endif %}
-          </ul>
+    <header class="header">
+      <nav class="navbar navbar-expand-lg fixed-top navbar-light">
+        <div class="container header-container">
+          <a href="/" class="logo"><span>Casjob</span></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto align-items-center main-nav-list">
+              <li class="nav-item">
+                <a class="main-nav-link mx-2" href="{{ url_for('hire') }}"
+                  >Hires</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="main-nav-link mx-2" href="{{ url_for('job_tank') }}"
+                  >Job Tank</a
+                >
+              </li>
+              {% if current_user.is_authenticated %}
+              <li class="nav-item">
+                <a
+                  class="main-nav-link mx-2"
+                  href="{{ url_for('new_job_post') }}"
+                  >Post a Job</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="main-nav-link mx-2" href="{{ url_for('account') }}"
+                  >Account</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="main-nav-link nav-cta logout mx-2"
+                  href="{{ url_for('logout') }}"
+                  >Log Out</a
+                >
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a
+                  class="main-nav-link nav-cta mx-2"
+                  href="{{ url_for('login') }}"
+                  >Sign In</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="main-nav-link nav-cta mx-2"
+                  href="{{ url_for('register') }}"
+                  >Register</a
+                >
+              </li>
+              {% endif %}
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
-    <!-- Navbar -->
+      </nav>
+    </header>
 
     <main class="content mx-auto">
       {% with messages = get_flashed_messages(with_categories=true) %} {% if

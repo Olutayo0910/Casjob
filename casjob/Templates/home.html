@@ -1,15 +1,26 @@
 {% extends 'base.html' %} {% block content %}
-<section id="hero" style="background-image: url('static/images/2a.jpg')">
-  <div class="hero-content">
-    <h2 class="hero-heading">Welcome to <span>Casjob</span></h2>
-    <p class="hero-text">
-      A place where we connect casual jobs demand and supply
-    </p>
-    <div>
-      <a href="{{ url_for('hire') }}" class="btn-get-started scrollto">Hire</a>
-      <a href="{{ url_for('job_tank') }}" class="btn-projects scrollto"
-        >Get Hired</a
-      >
+
+<section class="hero">
+  <div class="hero-box row align-items-center justify-content-center">
+    <div class="hero-text-box col-md-5 px-5">
+      <h1 class="hero-heading mb-4">
+        Secure reliable assistance for household tasks
+      </h1>
+      <p class="hero-description mb-5">
+        Connecting skilled hands, meeting needs. Find a pro and get the job done
+        in no time.
+      </p>
+      <div>
+        <a href="{{ url_for('hire') }}" class="btn-get-started">Hire</a>
+        <a href="{{ url_for('job_tank') }}" class="btn-projects">Get Hired</a>
+      </div>
+    </div>
+    <div class="hero-img-box col-md-5">
+      <img
+        src="static/images/casjob_hero_final.png"
+        alt="Man working on electricity"
+        class="hero-img img-fluid"
+      />
     </div>
   </div>
 </section>

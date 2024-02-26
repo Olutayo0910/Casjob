@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 62.5%;
+}
+
 body {
   font-family: "Rubik", sans-serif;
   line-height: 1;
@@ -17,32 +21,33 @@ body {
 }
 
 .joint {
-  padding: 0 50px;
+  padding: 0 5rem;
 }
 
-/*
+@media (min-width: 1200px) {
+  .header-container {
+    max-width: 140rem;
+  }
 
-html {
-  font-size: 62.5%;
+  .hero {
+    height: 100vh;
+  }
+
+  .hero-box {
+    height: 85vh;
+  }
 }
 
-.container {
-  max-width: 120rem;
-  padding: 0 3.2rem;
-  margin: 0 auto;
-}
-
-/* Header 
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #fdf2e9;
-  height: 9.6rem;
-  padding: 0 23rem;
-}
+/* 
+====================
+=======HEADER=======
+====================
 */
+
+nav {
+  background-color: #fdf2e9;
+}
+
 .logo span {
   font-size: 3.2rem;
   font-weight: 700;
@@ -56,6 +61,10 @@ legend {
 
 .logo:hover {
   text-decoration: none;
+}
+
+.navbar {
+  padding: 1.5rem 1rem;
 }
 
 .main-nav-list {
@@ -74,7 +83,7 @@ legend {
   text-decoration: none;
   color: #333;
   font-weight: 500;
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   transition: all 300ms;
 }
 
@@ -117,133 +126,62 @@ legend {
   padding: 0;
 }
 
-/* Hero */
-#hero {
-  width: 100%;
-  height: 80vh;
-  position: relative;
-  background: white;
-  background-size: cover;
-  background-position: center;
-  padding: 0;
+/* HERO */
+
+.hero {
+  background-color: #fdf2e9;
+  padding: 9rem 7rem;
 }
 
-.btn-hire:link,
-.btn-hire:visited {
-  border: 1px solid #f9a109;
-}
-
-.btn-hire:hover,
-.btn-hire:active {
-  text-decoration: none;
-  background-color: #f9a109;
-  color: #000;
-}
-
-.btn-get-hired:link,
-.btn-get-hired:visited {
-  border: 1px solid #0e7c7b;
-}
-
-.btn-get-hired:hover,
-.btn-get-hired:active {
-  text-decoration: none;
-  background-color: #0e7c7b;
-  color: #fff;
-}
-
-#hero .hero-content {
-  position: absolute;
-  bottom: 0;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  padding: 0;
-}
-
-#hero .hero-content h2 {
-  color: #0c2e8a;
-  margin-bottom: 30px;
-  font-size: 64px;
+.hero-heading {
   font-weight: 700;
+  color: #333;
+  letter-spacing: -0.5px;
+  font-size: 5.2rem;
+  line-height: 1.05;
 }
 
-#hero .hero-content h2 span {
-  color: #f9a109;
-  text-decoration: underline;
+.hero-description {
+  font-size: 2rem;
+  line-height: 1.6;
 }
 
-@media (max-width: 767px) {
-  #hero .hero-content h2 {
-    font-size: 34px;
-  }
-}
-
-#hero .hero-content .btn-get-started,
-#hero .hero-content .btn-projects {
-  font-size: 15px;
-  font-weight: bold;
+.btn-get-started,
+.btn-projects {
+  font-size: 2rem;
+  padding: 1.6rem 3.2rem;
+  font-weight: 600;
   letter-spacing: 1px;
   display: inline-block;
-  padding: 10px 32px;
-  border-radius: 2px;
-  transition: 0.5s;
-  margin: 10px;
+  border-radius: 9px;
+  transition: all 300ms;
+  margin: 1rem;
   color: #fff;
 }
 
-#hero .hero-content .btn-get-started {
+.btn-projects {
   background: #0c2e8a;
   border: 2px solid #0c2e8a;
 }
 
-#hero .hero-content .btn-get-started:hover {
+.btn-projects:hover {
   background: none;
   color: #0c2e8a;
+  text-decoration: none;
 }
 
-#hero .hero-content .btn-projects {
+.btn-get-started {
   background: #f9a109;
   border: 2px solid #f9a109;
 }
 
-#hero .hero-content .btn-projects:hover {
+.btn-get-started:hover {
   background: none;
   color: #f9a109;
+  text-decoration: none;
 }
 
-#hero .hero-slider {
-  z-index: 8;
-  height: 60vh;
-}
-
-#hero .hero-slider::before {
-  content: "";
-  background-color: rgba(255, 255, 255, 0.7);
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  z-index: 7;
-}
-
-#hero .hero-slider .swiper-slide {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  transition-property: opacity;
-}
-
-/* Features */
+/* FEATURES */
 
 .features {
   padding: 6.4rem 0;
@@ -261,7 +199,7 @@ legend {
   line-height: 1.5;
 }
 
-/* Footer */
+/* FOOTER */
 
 .footer {
   padding: 6.4rem 0;
