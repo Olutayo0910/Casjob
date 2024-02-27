@@ -1,65 +1,113 @@
-{% extends 'base.html' %}
-{% block content %}
-<div class="joint">
-<h2 class="display-3 mb-4 text-center"><b>Hire a Professional</b></h2>
-<div class="input-group mb-3 mx-auto" style="max-width: 740px;">
-    <div class="input-group-prepend">
-        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</button>
-        <div class="dropdown-menu" style="max-height: 200px; overflow-y: auto;">
-            {% for skill in skills %}
-            <a class="dropdown-item" href="#">{{ skill }}</a>
-            {% endfor %}
+{% extends 'base.html' %} {% block content %}
+<section class="hires">
+  <div class="container">
+    <h2 class="hires-heading display-3 mb-4 text-center">
+      Hire a Professional
+    </h2>
+    <div class="input-group mb-5 mx-auto categories-dropdown">
+      <div class="input-group-prepend">
+        <button
+          class="btn btn-outline-secondary dropdown-toggle categories-button"
+          type="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Categories
+        </button>
+        <div class="dropdown-menu categories-menu">
+          {% for skill in skills %}
+          <a class="dropdown-item" href="#">{{ skill }}</a>
+          {% endfor %}
         </div>
+      </div>
+      <input
+        type="text"
+        class="form-control search-input--hires"
+        aria-label="Text input with dropdown button"
+      />
+      <div class="input-group-append">
+        <span class="input-group-text search-icon" id="basic-addon2"
+          ><i class="fa-solid fa-magnifying-glass"></i
+        ></span>
+      </div>
     </div>
-    <input type="text" class="form-control" aria-label="Text input with dropdown button">
-    <div class="input-group-append">
-        <span class="input-group-text" id="basic-addon2"><i class="fa-solid fa-magnifying-glass"></i></span>
-    </div>
-</div>
-{% for hire in hires %}
-<div class="shadow card mb-3 mx-auto" style="max-width: 740px;">
-    <div class="row no-gutters">
-        <div class="col-md-4 d-flex align-items-center justify-content-center border-right border-bottom">
-            <img src="{{ url_for('static', filename='profile_pics/' + hire.image_file)}}" class="card-img rounded" alt="man" style="max-width: 70%; max-height: 70%;">
-        </div>
-        <div class="col-md-8">
+
+    <div class="d-flex flex-wrap">
+      {% for hire in hires %}
+      <div class="shadow card my-4 mx-auto col-md-5">
+        <div class="row no-gutters">
+          <div
+            class="col-md-4 d-flex align-items-center justify-content-center border-right border-bottom"
+          >
+            <img
+              src="{{ url_for('static', filename='profile_pics/' + hire.image_file)}}"
+              class="card-img rounded"
+              alt="man"
+              style="max-width: 70%; max-height: 70%"
+            />
+          </div>
+          <div class="col-md-8">
             <div class="card-body">
-                <h5 class="card-title">{{ hire.firstname }} {{ hire.lastname }}</h5>
-                <p class="card-text"><small class="text-muted">{{ hire.skill_type }}</small></p>
-                <p class="card-text">{{ hire.bio }}</p>
-                <p class="card-text"><small class="text-muted">{{ hire.years_of_experience }} years of experience</small></p>
-                {% if current_user.is_authenticated %}
-                    {% if hire != current_user %}
-                    <div class="form-group text-right">
-                        <a href="https://wa.me/{{ hire.phone_number }}" class="btn btn-outline-info custom-submit-btn" target="_blank">Hire Me</a>
-                    </div>
-                    {% endif %}
-                {% else %}
-                <div class="alert alert-warning" role="alert">
-                    You must <a href="{{ url_for('login') }}" class="alert-link">login</a> to hire this professional.
-                </div>
-                {% endif %}
-
+              <h5 class="card-title">
+                {{ hire.firstname }} {{ hire.lastname }}
+              </h5>
+              <p class="card-text">
+                <small class="text-muted">{{ hire.skill_type }}</small>
+              </p>
+              <p class="card-text">{{ hire.bio }}</p>
+              <p class="card-text">
+                <small class="text-muted"
+                  >{{ '0' if hire.years_of_experience == None else
+                  hire.years_of_experience }} years of experience</small
+                >
+              </p>
+              {% if current_user.is_authenticated %} {% if hire != current_user
+              %}
+              <div class="form-group text-right">
+                <a
+                  href="https://wa.me/{{ hire.phone_number }}"
+                  class="btn btn-outline-info custom-submit-btn"
+                  target="_blank"
+                  >Hire Me</a
+                >
+              </div>
+              {% endif %} {% else %}
+              <div class="alert alert-warning login-to-hire" role="alert">
+                <a href="{{ url_for('login') }}" class="alert-link">Log In</a>
+                or
+                <a href="{{ url_for('register') }}" class="alert-link"
+                  >Sign Up</a
+                >
+                to hire
+              </div>
+              {% endif %}
             </div>
+          </div>
         </div>
+      </div>
+      {% endfor %}
     </div>
-</div>
-{% endfor %}
-        <div class="row col-md-6 mx-auto">
-            {% for page_num in hires.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
-            <div class="form-group text-center">
-                {% if page_num %}
-                {% if hires.page == page_num %}
-                <a class="btn btn-info mb-4 mx-1" href="{{ url_for('hire', page=page_num) }}">{{ page_num }}</a>
-                {% else %}
-                <a class="btn btn-outline-info mb-4 mx-1" href="{{ url_for('hire', page=page_num) }}">{{ page_num }}</a>
-                {% endif %}
-                {% else %}
-                ...
-                {% endif %}
-            </div>
-            {% endfor %}
-</div>
-</div>
-
+    <div class="pages-box row justify-content-center align-items-center my-5">
+      {% for page_num in hires.iter_pages(left_edge=1, right_edge=1,
+      left_current=1, right_current=2) %}
+      <div class="text-center">
+        {% if page_num %} {% if hires.page == page_num %}
+        <a
+          class="btn btn-info pages-link"
+          href="{{ url_for('hire', page=page_num) }}"
+          >{{ page_num }}</a
+        >
+        {% else %}
+        <a
+          class="btn btn-outline-info pages-link"
+          href="{{ url_for('hire', page=page_num) }}"
+          >{{ page_num }}</a
+        >
+        {% endif %} {% else %} ... {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 {% endblock content %}

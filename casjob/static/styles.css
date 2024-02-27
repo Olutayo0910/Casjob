@@ -221,6 +221,56 @@ legend {
   color: #cf711f;
 }
 
+.btn {
+  font-size: 1.8rem;
+  border-radius: 9px;
+}
+
+.dropdown-menu {
+  max-height: 20rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.categories-menu {
+  font-size: 1.6rem;
+}
+
+@media (min-width: 968px) {
+  .categories-dropdown {
+    width: 60%;
+  }
+}
+
+.search-input--hires {
+  font-size: 1.8rem;
+}
+
+.search-icon {
+  font-size: 2rem;
+}
+
+.card-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.card-text {
+  font-size: 1.8rem;
+  line-height: 1.5;
+}
+
+.login-to-hire {
+  font-size: 1.4rem;
+}
+
+.pages-box {
+  gap: 2rem;
+}
+
+.pages-link {
+  padding: 1rem 2rem;
+}
 /* FOOTER */
 
 .footer {
@@ -305,14 +355,14 @@ legend {
 }
 
 /* Normal state */
-.btn {
-  background-color: #f9fafc; /* Blue color */
-  color: #141313; /* White text */
+/* .btn {
+  background-color: #f9fafc;
+  color: #141313; 
   border: solid 1px;
   border-color: #0c2453;
   padding: 10px 20px;
   cursor: pointer;
-}
+} */
 
 /* Hover state */
 .btn:hover {
@@ -338,69 +388,6 @@ h4 a {
 
 .btn-sm {
   padding: 10px;
-}
-
-/* About Section
---------------------------------*/
-#about {
-  padding: 60px 0 30px 0;
-}
-
-#about .about-img {
-  overflow: hidden;
-}
-
-#about .about-img img {
-  margin-left: -15px;
-  max-width: 100%;
-}
-
-@media (max-width: 768px) {
-  #about .about-img {
-    height: auto;
-  }
-
-  #about .about-img img {
-    margin-left: 0;
-    padding-bottom: 30px;
-  }
-}
-
-#about .content h2 {
-  color: #0c2e8a;
-  font-weight: 700;
-  font-size: 36px;
-}
-
-#about .content h3 {
-  color: #555;
-  font-weight: 300;
-  font-size: 18px;
-  line-height: 26px;
-  font-style: italic;
-}
-
-#about .content p {
-  line-height: 26px;
-}
-
-#about .content p:last-child {
-  margin-bottom: 0;
-}
-
-#about .content i {
-  font-size: 20px;
-  padding-right: 4px;
-  color: #50d8af;
-}
-
-#about .content ul {
-  list-style: none;
-  padding: 0;
-}
-
-#about .content ul li {
-  padding-bottom: 10px;
 }
 
 /*--------------------------------------------------------------
