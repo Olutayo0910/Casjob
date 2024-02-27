@@ -50,7 +50,7 @@ def register():
         db.session.commit()
         flash(f'Account { form.username.data } Created Succesfully, you can now log in!', 'success')
         return redirect(url_for('login'))
-    return render_template('register.html', title='Register', form=form)
+    return render_template('register.html', title='Register', form=form, show_header='false')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -65,7 +65,7 @@ def login():
             return redirect(next_page) if next_page else redirect(url_for('job_tank'))
         else:
             flash(f'Login Unsuccesfully. Please check email and password!', 'danger')
-    return render_template('login.html', title='Login', form=form)
+    return render_template('login.html', title='Login', form=form, show_header='false')
 
 @app.route('/logout')
 def logout():

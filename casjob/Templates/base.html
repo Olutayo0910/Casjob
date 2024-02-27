@@ -26,6 +26,7 @@
       <nav class="navbar navbar-expand-lg fixed-top navbar-light">
         <div class="container header-container">
           <a href="/" class="logo"><span>Casjob</span></a>
+          {% if show_header != 'false' %}
           <button
             class="navbar-toggler"
             type="button"
@@ -74,24 +75,25 @@
                 <a
                   class="main-nav-link nav-cta mx-2"
                   href="{{ url_for('login') }}"
-                  >Sign In</a
+                  >Log In</a
                 >
               </li>
               <li class="nav-item">
                 <a
                   class="main-nav-link nav-cta mx-2"
                   href="{{ url_for('register') }}"
-                  >Register</a
+                  >Sign Up</a
                 >
               </li>
               {% endif %}
             </ul>
           </div>
+          {% endif %}
         </div>
       </nav>
     </header>
 
-    <main class="content mx-auto">
+    <main>
       {% with messages = get_flashed_messages(with_categories=true) %} {% if
       messages %} {% for category, message in messages %}
       <div class="alert alert-{{ category }}">{{ message }}</div>
@@ -104,7 +106,7 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-3 col-md-6 footer-contact">
-              <a class="footer-logo"><span>Casjob</span></a>
+              <a class="footer-logo" href="/"><span>Casjob</span></a>
               <p>
                 A108 Adam Street <br />
                 Lagos,<br />
