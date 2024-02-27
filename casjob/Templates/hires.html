@@ -4,7 +4,9 @@
     <h2 class="hires-heading display-3 mb-4 text-center">
       Hire a Professional
     </h2>
-    <div class="input-group mb-5 mx-auto categories-dropdown">
+
+    <!-- SEARCH BAR -->
+    <!-- <div class="input-group mb-5 mx-auto categories-dropdown">
       <div class="input-group-prepend">
         <button
           class="btn btn-outline-secondary dropdown-toggle categories-button"
@@ -25,26 +27,26 @@
         type="text"
         class="form-control search-input--hires"
         aria-label="Text input with dropdown button"
+        placeholder="Search..."
       />
       <div class="input-group-append">
         <span class="input-group-text search-icon" id="basic-addon2"
           ><i class="fa-solid fa-magnifying-glass"></i
         ></span>
       </div>
-    </div>
+    </div> -->
 
     <div class="d-flex flex-wrap">
       {% for hire in hires %}
-      <div class="shadow card my-4 mx-auto col-md-5">
+      <article class="shadow card my-4 mx-auto col-md-5">
         <div class="row no-gutters">
           <div
             class="col-md-4 d-flex align-items-center justify-content-center border-right border-bottom"
           >
             <img
               src="{{ url_for('static', filename='profile_pics/' + hire.image_file)}}"
-              class="card-img rounded"
+              class="card-img rounded hire-img"
               alt="man"
-              style="max-width: 70%; max-height: 70%"
             />
           </div>
           <div class="col-md-8">
@@ -85,7 +87,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </article>
       {% endfor %}
     </div>
     <div class="pages-box row justify-content-center align-items-center my-5">

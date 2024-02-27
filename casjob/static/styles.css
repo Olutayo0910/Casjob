@@ -250,6 +250,11 @@ legend {
   font-size: 2rem;
 }
 
+.hire-img {
+  max-width: 70%;
+  max-height: 70%;
+}
+
 .card-title {
   font-size: 2.4rem;
   font-weight: 700;
@@ -271,6 +276,30 @@ legend {
 .pages-link {
   padding: 1rem 2rem;
 }
+
+/* JOB TANK */
+.job-tank {
+  padding: 9.6rem 0;
+  color: #222;
+}
+
+.job-tank-heading {
+  color: #cf711f;
+}
+
+.article-metadata {
+  font-size: 1.6rem;
+}
+
+.article-title {
+  font-size: 2rem;
+}
+
+.article-content {
+  font-size: 1.6rem;
+  line-height: 1.3;
+}
+
 /* FOOTER */
 
 .footer {

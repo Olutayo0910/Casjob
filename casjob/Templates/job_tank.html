@@ -1,52 +1,86 @@
-{% extends "base.html" %}
-{% block content %}
-<div class="joint">
-<h2 class="display-3 mb-4 text-center"><b>Get a job</b></h2>
-{% for post in posts.items %}
-    <article class="shadow card mb-3 mx-auto" style="max-width: 740px;">
-        <div class="card mb-4">
-            <div class="card-body">
-                <div class="media mb-3">
-                    <img src="{{ url_for('static', filename='profile_pics/' + post.author.image_file)}}" class="rounded-circle" width="50" height="50" alt="{{ post.author.username }}">
-                    <div class="media-body ml-3">
-                        <div class="article-metadata">
-                            <a class="mr-2" href="{{ url_for('user_job_posts', username=post.author.username) }}">{{ post.author.username }}</a>
-                            <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
-                        </div>
-                        <h2><a class="article-title" href="#">{{ post.skill_type }}</a></h2>
-                        <h4><a class="article-title" href="{{ url_for('post', post_id=post.id)}}">{{ post.title }}</a></h4>
-                        <p class="article-content">{{ post.job_description }}</p>
-                        {% if current_user.is_authenticated %}
-                            {% if post.author != current_user %}
-                                <div class="form-group text-right">
-                                    <a href="https://wa.me/{{ user_phone_numbers[post.author.id] }}" class="btn btn-outline-info custom-submit-btn" target="_blank">Apply</a>
-                                </div>
-                            {% endif %}
-                        {% else %}
-                        <div class="alert alert-warning" role="alert">
-                            You must <a href="{{ url_for('login') }}" class="alert-link">login</a> to apply for this job.
-                        </div>
-                        {% endif %}
-                    </div>
-                </div>
+{% extends "base.html" %} {% block content %}
+<section class="job-tank">
+  <div class="container">
+    <h2 class="job-tank-heading display-3 mb-4 text-center">Get a job</h2>
+
+    <div class="d-flex flex-wrap">
+      {% for post in posts.items %}
+      <article class="shadow card my-4 mx-auto col-md-5">
+        <div class="card-body">
+          <div class="media mb-3">
+            <img
+              src="{{ url_for('static', filename='profile_pics/' + post.author.image_file)}}"
+              class="rounded-circle"
+              width="50"
+              height="50"
+              alt="{{ post.author.username }}"
+            />
+            <div class="media-body ml-3">
+              <div class="article-metadata mb-2">
+                <a
+                  class="mr-2"
+                  href="{{ url_for('user_job_posts', username=post.author.username) }}"
+                  >{{ post.author.username }}</a
+                >
+                <small class="text-muted"
+                  >{{ post.date_posted.strftime('%Y-%m-%d') }}</small
+                >
+              </div>
+              <h2>
+                <a
+                  class="article-title"
+                  href="{{ url_for('post', post_id=post.id)}}"
+                  >{{ post.skill_type }}</a
+                >
+              </h2>
+              <h4>
+                <span class="article-title" href="">{{ post.title }}</span>
+              </h4>
+              <p class="article-content">{{ post.job_description }}</p>
+              {% if current_user.is_authenticated %} {% if post.author !=
+              current_user %}
+              <div class="form-group text-right">
+                <a
+                  href="https://wa.me/{{ user_phone_numbers[post.author.id] }}"
+                  class="btn btn-outline-info custom-submit-btn"
+                  target="_blank"
+                  >Apply</a
+                >
+              </div>
+              {% endif %} {% else %}
+              <div class="alert alert-warning login-to-hire" role="alert">
+                <a href="{{ url_for('login') }}" class="alert-link">Log In</a>
+                or
+                <a href="{{ url_for('register') }}" class="alert-link"
+                  >Sign Up</a
+                >
+                to apply
+              </div>
+              {% endif %}
             </div>
+          </div>
         </div>
-    </article>
+      </article>
+      {% endfor %}
+    </div>
 
-{% endfor %}
-
-<div class="row col-md-6 mx-auto">
-{% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
-    {% if page_num %}
-        {% if posts.page == page_num %}  
-            <a class="btn btn-info mb-4" href="{{ url_for('job_tank', page=page_num) }}">{{ page_num }}</a>
-        {% else %}
-            <a class="btn btn-outline-info mb-4" href="{{ url_for('job_tank', page=page_num) }}">{{ page_num }}</a>
-        {% endif %}
-    {% else %}
-        ...
-    {% endif %}
-{% endfor %}
-</div>
-</div>
+    <div class="pages-box row justify-content-center align-items-center my-5">
+      {% for page_num in posts.iter_pages(left_edge=1, right_edge=1,
+      left_current=1, right_current=2) %} {% if page_num %} {% if posts.page ==
+      page_num %}
+      <a
+        class="btn btn-info pages-link"
+        href="{{ url_for('job_tank', page=page_num) }}"
+        >{{ page_num }}</a
+      >
+      {% else %}
+      <a
+        class="btn btn-outline-info pages-link"
+        href="{{ url_for('job_tank', page=page_num) }}"
+        >{{ page_num }}</a
+      >
+      {% endif %} {% else %} ... {% endif %} {% endfor %}
+    </div>
+  </div>
+</section>
 {% endblock content %}
