@@ -470,9 +470,35 @@ legend {
   }
 }
 
-/*--------------------------------------------------------------
-# Footer
---------------------------------------------------------------*/
+/* ****************************** */
+/* RESET PASSWORD */
+/* ****************************** */
+.reset-password {
+  padding: 3.2rem 0;
+  color: #222;
+}
+
+.reset-password-box {
+  width: 75%;
+  font-size: 2.4rem;
+}
+
+@media (min-width: 768px) {
+  .reset-password-box {
+    width: 35%;
+    font-size: 2rem;
+  }
+}
+
+.reset-password-heading {
+  font-size: 3.6rem;
+  font-weight: 500;
+  color: #cf711f;
+}
+
+/* ****************************** */
+/* FOOTER */
+/* ****************************** */
 #footer {
   background-color: #f3f4f6;
   color: #5f687b;

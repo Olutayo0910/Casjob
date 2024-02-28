@@ -34,11 +34,6 @@
         <div class="form-group">
           {{ form.submit(class="btn btn-outline-info custom-submit-btn") }}
         </div>
-        <div class="text-center">
-          <small class="text-muted">
-            <a href="{{ url_for('reset_request') }}">Forgot Password?</a>
-          </small>
-        </div>
       </form>
     </div>
     <div class="sign-up-suggest my-3 mx-auto">
@@ -51,7 +46,15 @@
 </section>
 {% endblock content %}
 
+<!-- REMEMBER ME? -->
 <!-- <div class="form-check">
           {{ form.remember(class="form-check-input") }} {{
           form.remember.label(class="form-check-label") }}
+        </div> -->
+
+<!-- FORGOT PASSWORD -->
+<!--  <div class="text-center">
+          <small class="text-muted">
+            <a href="{{ url_for('reset_request') }}">Forgot Password?</a>
+          </small>
         </div> -->
