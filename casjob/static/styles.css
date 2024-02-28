@@ -20,6 +20,14 @@ body {
   box-shadow: 0 0 0 0.8rem rgba(230, 125, 34, 0.5);
 }
 
+.main-content {
+  padding: 6.4rem 0;
+}
+
+.notification {
+  font-size: 2rem;
+}
+
 .btn {
   font-size: 1.8rem;
   border-radius: 9px;
@@ -44,7 +52,7 @@ body {
   }
 
   .hero {
-    height: 100vh;
+    height: 90vh;
   }
 
   .hero-box {
@@ -137,7 +145,7 @@ legend {
 /* ****************************** */
 .hero {
   background-color: #fdf2e9;
-  padding: 9rem 7rem;
+  padding: 0 7rem 9rem;
 }
 
 .hero-heading {
@@ -228,7 +236,7 @@ legend {
 /* HIRES */
 /* ****************************** */
 .hires {
-  padding: 9.6rem 0;
+  padding: 3.2rem 0;
   color: #222;
 }
 
@@ -291,7 +299,7 @@ legend {
 /* JOB TANK */
 /* ****************************** */
 .job-tank {
-  padding: 9.6rem 0;
+  padding: 3.2rem 0;
   color: #222;
 }
 
@@ -316,7 +324,7 @@ legend {
 /* LOGIN */
 /* ****************************** */
 .login {
-  padding: 9.6rem 0;
+  padding: 3.2rem 0;
   color: #222;
 }
 
@@ -362,7 +370,7 @@ legend {
 /* REGISTER */
 /* ****************************** */
 .register {
-  padding: 9.6rem 0;
+  padding: 3.2rem 0;
   color: #222;
 }
 
@@ -388,7 +396,7 @@ legend {
 /* JOB INFO */
 /* ****************************** */
 .job-info {
-  padding: 9.6rem 0;
+  padding: 3.2rem 0;
   color: #222;
 }
 
@@ -402,7 +410,7 @@ legend {
 /* USER POSTS */
 /* ****************************** */
 .user-posts {
-  padding: 9.6rem 0;
+  padding: 3.2rem 0;
   color: #222;
 }
 
@@ -420,7 +428,7 @@ legend {
 /* CREATE JOB */
 /* ****************************** */
 .create-job {
-  padding: 9.6rem 0;
+  padding: 3.2rem 0;
   color: #222;
 }
 
@@ -440,6 +448,26 @@ legend {
   font-size: 3.6rem;
   font-weight: 500;
   color: #cf711f;
+}
+
+/* ****************************** */
+/* ACCOUNT */
+/* ****************************** */
+.account {
+  padding: 3.2rem 0;
+  color: #222;
+}
+
+.account-box {
+  width: 75%;
+  font-size: 2.4rem;
+}
+
+@media (min-width: 768px) {
+  .account-box {
+    width: 35%;
+    font-size: 2rem;
+  }
 }
 
 /*--------------------------------------------------------------

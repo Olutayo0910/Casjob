@@ -51,9 +51,9 @@ class LoginForm(FlaskForm):
 
 
 class UpdateAccountForm(FlaskForm):
-    firstname = StringField('Firstname',
+    firstname = StringField('First Name',
                            validators=[DataRequired(), Length(min=2, max=20)])
-    lastname = StringField('Lastname',
+    lastname = StringField('Last Name',
                            validators=[DataRequired(), Length(min=2, max=20)])
     username = StringField('Username',
                            validators=[DataRequired(), Length(min=2, max=20)])
@@ -62,7 +62,7 @@ class UpdateAccountForm(FlaskForm):
     skill_type = SelectField('Skill Type', choices=[(skill, skill) for skill in SKILLS])
     phone_number = StringField('Phone Number', validators=[DataRequired(), Length(min=10, max=15)])
     bio = TextAreaField('Bio', validators=[DataRequired()])
-    image = FileField('Update profile picture', validators=[FileAllowed(['jpg', 'png'])])
+    image = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
     
     submit = SubmitField('Save')
 
