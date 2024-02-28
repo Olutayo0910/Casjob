@@ -1,44 +1,45 @@
-{% extends "base.html" %}
-{% block content %}
-<div class="content-section mx-auto" style="max-width: 740px;">
+{% extends "base.html" %} {% block content %}
+<section class="create-job">
+  <div class="create-job-box mx-auto">
     <form method="POST" action="">
-        {{ form.hidden_tag() }}
-        <fieldset class="form-group">
-            <legend class="border-bottom mb-4">{{ legend }}</legend>
-            <div class="form-group">
-                {{ form.title.label(class="form-control-label") }}
-                {% if form.title.errors %}
-                    {{ form.title(class="form-control form-control-lg is-invalid") }}
-                    <div class="invalid-feedback">
-                        {% for error in form.title.errors %}
-                            <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                {% else %}
-                    {{ form.title(class="form-control form-control-lg") }}
-                {% endif %}
-            </div>
-            <div class="form-group">
-                {{ form.skill_type.label(class="form-control-label") }}
-                {{ form.skill_type(class="form-control form-control-lg") }}
-            </div>
-            <div class="form-group">
-                {{ form.job_description.label(class="form-control-label") }}
-                {% if form.job_description.errors %}
-                    {{ form.job_description(class="form-control form-control-lg is-invalid") }}
-                    <div class="invalid-feedback">
-                        {% for error in form.job_description.errors %}
-                            <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                {% else %}
-                    {{ form.job_description(class="form-control form-control-lg") }}
-                {% endif %}
-            </div>
-        </fieldset>
+      {{ form.hidden_tag() }}
+      <fieldset class="form-group">
+        <h2 class="create-job-heading mb-5 text-center">{{ legend }}</h2>
         <div class="form-group">
-            {{ form.submit(class="btn btn-outline-info custom-submit-btn") }}
-        </div>    
+          {{ form.title.label(class="form-control-label create-job-label") }} {%
+          if form.title.errors %} {{ form.title(class="form-control
+          form-control-lg is-invalid create-job-input") }}
+          <div class="invalid-feedback">
+            {% for error in form.title.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+          {% else %} {{ form.title(class="form-control form-control-lg
+          create-job-input") }} {% endif %}
+        </div>
+        <div class="form-group">
+          {{ form.skill_type.label(class="form-control-label create-job-label")
+          }} {{ form.skill_type(class="form-control form-control-lg
+          create-job-input") }}
+        </div>
+        <div class="form-group">
+          {{ form.job_description.label(class="form-control-label
+          create-job-label") }} {% if form.job_description.errors %} {{
+          form.job_description(class="form-control form-control-lg is-invalid
+          create-job-input") }}
+          <div class="invalid-feedback">
+            {% for error in form.job_description.errors %}
+            <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+          {% else %} {{ form.job_description(class="form-control form-control-lg
+          create-job-input") }} {% endif %}
+        </div>
+      </fieldset>
+      <div class="form-group">
+        {{ form.submit(class="btn btn-outline-info custom-submit-btn") }}
+      </div>
     </form>
-</div>
+  </div>
+</section>
 {% endblock content %}

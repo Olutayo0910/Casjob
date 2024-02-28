@@ -20,6 +20,24 @@ body {
   box-shadow: 0 0 0 0.8rem rgba(230, 125, 34, 0.5);
 }
 
+.btn {
+  font-size: 1.8rem;
+  border-radius: 9px;
+}
+
+.btn:hover {
+  background-color: #0c2453;
+  color: white;
+}
+
+.btn:active {
+  background-color: #0c2453;
+}
+
+.btn-sm {
+  padding: 10px;
+}
+
 @media (min-width: 1200px) {
   .header-container {
     max-width: 140rem;
@@ -218,11 +236,6 @@ legend {
   color: #cf711f;
 }
 
-.btn {
-  font-size: 1.8rem;
-  border-radius: 9px;
-}
-
 .dropdown-menu {
   max-height: 20rem;
   overflow-y: auto;
@@ -326,12 +339,14 @@ legend {
 }
 
 .login-label,
-.register-label {
+.register-label,
+.create-job-label {
   font-size: 2.4rem;
 }
 
 .login-input,
-.register-input {
+.register-input,
+.create-job-input {
   font-size: 2rem;
 }
 
@@ -369,40 +384,62 @@ legend {
   color: #cf711f;
 }
 
-/* Normal state */
-/* .btn {
-  background-color: #f9fafc;
-  color: #141313; 
-  border: solid 1px;
-  border-color: #0c2453;
-  padding: 10px 20px;
-  cursor: pointer;
-} */
-
-/* Hover state */
-.btn:hover {
-  background-color: #0c2453; /* Darker blue on hover */
-  color: white;
+/* ****************************** */
+/* JOB INFO */
+/* ****************************** */
+.job-info {
+  padding: 9.6rem 0;
+  color: #222;
 }
 
-/* Active state */
-.btn:active {
-  background-color: #0c2453; /* Even darker blue on click */
+.job-heading {
+  font-size: 3.2rem;
+  font-weight: 500;
+  color: #cf711f;
 }
 
-/* h2 a {
-  color: #0c2453;
+/* ****************************** */
+/* USER POSTS */
+/* ****************************** */
+.user-posts {
+  padding: 9.6rem 0;
+  color: #222;
 }
 
-h2 {
-  color: #0c2453;
-} */
-h4 a {
-  color: #222324;
+.user-post-heading {
+  font-size: 3.2rem;
+  font-weight: 500;
+  color: #cf711f;
 }
 
-.btn-sm {
-  padding: 10px;
+.user-post-heading span {
+  color: #222;
+}
+
+/* ****************************** */
+/* CREATE JOB */
+/* ****************************** */
+.create-job {
+  padding: 9.6rem 0;
+  color: #222;
+}
+
+.create-job-box {
+  width: 75%;
+  font-size: 2.4rem;
+}
+
+@media (min-width: 768px) {
+  .create-job-box {
+    width: 25%;
+    font-size: 2rem;
+  }
+}
+
+.create-job-heading {
+  font-size: 3.6rem;
+  font-weight: 500;
+  color: #cf711f;
 }
 
 /*--------------------------------------------------------------
@@ -413,6 +450,17 @@ h4 a {
   color: #5f687b;
   font-size: 14px;
   position: relative;
+}
+
+.footer-logo {
+  display: block;
+}
+
+.footer-logo span {
+  font-size: 3.2rem;
+  font-weight: 700;
+  letter-spacing: 0.00001rem;
+  color: #f9a109;
 }
 
 .footer-logo:hover {
@@ -503,6 +551,11 @@ h4 a {
   transition: 0.3s;
 }
 
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
 #footer .footer-top .social-links a:hover {
   background: #f9a109;
   color: #fff;
@@ -537,7 +590,7 @@ h4 a {
 
 /* MY FOOTER */
 
-.footer {
+/* .footer {
   padding: 6.4rem 0;
   border-top: 1px solid #eee;
 }
@@ -552,21 +605,9 @@ h4 a {
   flex-direction: column;
 }
 
-.footer-logo {
-  display: block;
-}
 
-.footer-logo span {
-  font-size: 3.2rem;
-  font-weight: 700;
-  letter-spacing: 0.00001rem;
-  color: #f9a109;
-}
 
-.footer-links ul {
-  list-style: none;
-  padding: 0;
-}
+
 
 .social-links {
   list-style: none;
@@ -616,4 +657,4 @@ h4 a {
   font-size: 1.6rem;
   color: #767676;
   transition: all 0.3s;
-}
+} */

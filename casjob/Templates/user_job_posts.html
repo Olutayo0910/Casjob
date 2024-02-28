@@ -1,36 +1,62 @@
-{% extends "base.html" %}
-{% block content %}
-    <h1 class="mb-3">Jobs by {{ user.username }} ({{ posts.total }})</h1>
-    {% for post in posts.items %}
+{% extends "base.html" %} {% block content %}
+<section class="user-posts">
+  <h2 class="user-post-heading mb-4 text-center">
+    Jobs by {{ user.username }}: <span>{{ posts.total }}</span>
+  </h2>
+  {% for post in posts.items %}
 
-        <article class="shadow card mb-3 mx-auto" style="max-width: 740px;">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <div class="media mb-3">
-                        <img src="{{ url_for('static', filename='profile_pics/' + post.author.image_file)}}" class="rounded-circle" width="50" height="50" alt="{{ post.author.username }}">
-                        <div class="media-body ml-3">
-                            <div class="article-metadata">
-                                <a class="mr-2" href="{{ url_for('user_job_posts', username=post.author.username) }}">{{ post.author.username }}</a>
-                                <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
-                            </div>
-                            <h2><a class="article-title" href="#">{{ post.skill_type }}</a></h2>
-                            <h4><a class="article-title" href="{{ url_for('post', post_id=post.id)}}">{{ post.title }}</a></h4>
-                            <p class="article-content">{{ post.job_description }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </article>
-        {% endfor %}
-        {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
-            {% if page_num %}
-                {% if posts.page == page_num %}  
-                    <a class="btn btn-info mb-4" href="{{ url_for('user_job_posts', username=user.username, page=page_num) }}">{{ page_num }}</a>
-                {% else %}
-                    <a class="btn btn-outline-info mb-4" href="{{ url_for('user_job_posts', username=user.username, page=page_num) }}">{{ page_num }}</a>
-                {% endif %}
-            {% else %}
-                ...
-            {% endif %}
-    {% endfor %}   
+  <article class="shadow card mb-3 col-10 col-md-5 mx-auto">
+    <div class="card-body">
+      <div class="media mb-3">
+        <img
+          src="{{ url_for('static', filename='profile_pics/' + post.author.image_file)}}"
+          class="rounded-circle"
+          width="50"
+          height="50"
+          alt="{{ post.author.username }}"
+        />
+        <div class="media-body ml-3">
+          <div class="article-metadata">
+            <a
+              class="mr-2"
+              href="{{ url_for('user_job_posts', username=post.author.username) }}"
+              >{{ post.author.username }}</a
+            >
+            <small class="text-muted"
+              >{{ post.date_posted.strftime('%Y-%m-%d') }}</small
+            >
+          </div>
+          <h2>
+            <a
+              class="article-title"
+              href="{{ url_for('post', post_id=post.id)}}"
+              >{{ post.skill_type }}</a
+            >
+          </h2>
+          <h4 class="article-title">{{ post.title }}</h4>
+          <p class="article-content">{{ post.job_description }}</p>
+        </div>
+      </div>
+    </div>
+  </article>
+  {% endfor %}
+
+  <div class="pages-box row justify-content-center align-items-center my-5">
+    {% for page_num in posts.iter_pages(left_edge=1, right_edge=1,
+    left_current=1, right_current=2) %} {% if page_num %} {% if posts.page ==
+    page_num %}
+    <a
+      class="btn btn-info pages-link"
+      href="{{ url_for('user_job_posts', username=user.username, page=page_num) }}"
+      >{{ page_num }}</a
+    >
+    {% else %}
+    <a
+      class="btn btn-outline-info pages-link"
+      href="{{ url_for('user_job_posts', username=user.username, page=page_num) }}"
+      >{{ page_num }}</a
+    >
+    {% endif %} {% else %} ... {% endif %} {% endfor %}
+  </div>
+</section>
 {% endblock content %}
