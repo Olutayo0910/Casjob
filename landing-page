@@ -56,7 +56,7 @@
   </div>
 </nav>
 <!-- Navbar -->
-<section id="hero" style="background-image: url('static/images/2a.jpg'); margin-top: -100px;">
+<section id="hero" style="background-image: url('https://olutayo0910.github.io/casjob/static/images/2a.jpg'); margin-top: -100px;">
   <div class="hero-content" data-aos="fade-up">
     <h2>Welcome to <span>Casjob</span></h2>
     <p>A place where we connect casual jobs demand and supply</p>
