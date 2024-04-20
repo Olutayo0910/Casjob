@@ -1,266 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      src="https://kit.fontawesome.com/1d95d16c4b.js"
-      crossorigin="anonymous"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../static/styles.css?{{cache_id}}" />
-    <script src="../static/main.js?{{cache_id}}"></script>
-    <title>Casjob</title>
-  </head>
-  <body>
-    <!-- Navbar -->
-<nav class="navbar navbar-expand-lg fixed-top bg-light navbar-light">
-  <div class="container">
-    <a href="/" class="logo"><span>Casjob</span></a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <i class="fas fa-bars"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto align-items-center">
-        <li class="nav-item">
-          <a class="nav-link mx-2" href="#">Hires</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link mx-2" href="#">Job Tank</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link mx-2" href="#">Sign In</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link mx-2" href="#">Register</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<!-- Navbar -->
-<section class="hero">
-  <div class="hero-box row align-items-center justify-content-center">
-    <div class="hero-text-box col-md-5 px-5">
-      <h1 class="hero-heading mb-3 display-3 display-md-2">
-        Secure reliable assistance for household tasks
-      </h1>
-      <p class="hero-description mb-4">
-        Connecting skilled hands, meeting needs. Find a pro and get the job done
-        in no time.
-      </p>
-      <div class="mb-5">
-        <a href="{{ url_for('hire') }}" class="btn-get-started">Hire</a>
-        <a href="{{ url_for('job_tank') }}" class="btn-projects">Get Hired</a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://kit.fontawesome.com/1d95d16c4b.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="path/to/static/styles.css" /> <!-- Adjust the path to your CSS file -->
+  <title>Casjob</title>
+</head>
+<body>
+  <header class="header">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light">
+      <div class="container header-container">
+        <a href="/" class="logo"><span>Casjob</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto align-items-center main-nav-list">
+            <li class="nav-item">
+              <a class="main-nav-link mx-2" href="hire.html">Hires</a>
+            </li>
+            <li class="nav-item">
+              <a class="main-nav-link mx-2" href="job_tank.html">Job Tank</a>
+            </li>
+            <li class="nav-item">
+              <a class="main-nav-link mx-2" href="login.html">Log In</a>
+            </li>
+            <li class="nav-item">
+              <a class="main-nav-link mx-2" href="register.html">Sign Up</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="hero-img-box col-md-5">
-      <img
-        src="static/images/casjob_hero_final.png"
-        alt="Man working on electricity"
-        class="hero-img img-fluid"
-      />
-    </div>
-  </div>
-</section>
+    </nav>
+  </header>
 
-<section class="features container px-4 px-md-0">
-  <h2 class="features-heading mb-5 text-center">Features</h2>
-
-  <div
-    class="feature d-flex flex-column-reverse flex-md-row align-items-center justify-content-around mb-5"
-  >
-    <img
-      class="feature-img col-md-5 img-thumbnail img-fluid"
-      src="static/images/casjob_get_a_job.png"
-    />
-    <div class="feature-text col-md-5">
-      <h4 class="feature-text--title mb-3">Get a Job</h4>
-      <p class="feature-text--description mb-4">
-        Job seekers can browse through the available job listings on Casjob to
-        find positions that match their skills and preferences. The search
-        functionality allows users to filter jobs based on skill type, location,
-        and other criteria, enabling them to find relevant opportunities quickly
-        and easily.
-      </p>
-    </div>
-  </div>
-
-  <div
-    class="feature d-flex flex-column flex-md-row align-items-center justify-content-around mb-5"
-  >
-    <div class="feature-text col-md-5">
-      <h4 class="feature-text--title mb-3">One-Click Hiring</h4>
-      <p class="feature-text--description mb-4">
-        Employers have the ability to hire registered hires with just one click.
-        Once they find a suitable candidate, employers can initiate the hiring
-        process directly from the candidate's profile, streamlining the hiring
-        process and saving time.
-      </p>
-    </div>
-    <img
-      class="feature-img col-md-5 img-thumbnail img-fluid"
-      src="static/images/casjob_one_click_hiring.png"
-    />
-  </div>
-
-  <div
-    class="feature d-flex flex-column-reverse flex-md-row align-items-center justify-content-around mb-5"
-  >
-    <img
-      class="feature-img col-md-5 img-thumbnail img-fluid"
-      src="static/images/casjob_post_a_job.png"
-    />
-    <div class="feature-text col-md-5">
-      <h4 class="feature-text--title mb-3">Post a Job</h4>
-      <p class="feature-text--description mb-4">
-        Casjob allows users to post job listings for various short-term contract
-        jobs. Users can provide detailed descriptions of the job requirements,
-        including skill type, job title, job description, and contact
-        information.
-      </p>
-    </div>
-  </div>
-</section>
-
-<section class="about">
-  <h2 class="about-heading text-center mb-5">About Us</h2>
-  <div class="container">
-    <div
-      class="d-flex flex-column flex-md-row align-items-center justify-content-around"
-    >
-      <div class="about-text col-md-6">
-        <h3>
-          Casjob is your premier destination for connecting individuals seeking
-          casual employment with businesses looking to hire for short-term
-          positions.
-        </h3>
-        <h3>
-          At Casjob, we specialize in casual jobs across a variety of
-          industries, including mechanics, hairdressers, web developers, and
-          more. Whether you're a skilled professional looking for flexible work
-          or a business in need of temporary assistance, we've got you covered.
-        </h3>
-        <h3>
-          Join the Casjob community today and discover the perfect casual job.
-        </h3>
+  <main class="main-content">
+    <section class="hero">
+      <div class="hero-box row align-items-center justify-content-center">
+        <div class="hero-text-box col-md-5 px-5">
+          <h1 class="hero-heading mb-3 display-3 display-md-2">
+            Secure reliable assistance for household tasks
+          </h1>
+          <p class="hero-description mb-4">
+            Connecting skilled hands, meeting needs. Find a pro and get the job done
+            in no time.
+          </p>
+          <div class="mb-5">
+            <a href="{{ url_for('hire') }}" class="btn-get-started">Hire</a>
+            <a href="{{ url_for('job_tank') }}" class="btn-projects">Get Hired</a>
+          </div>
+        </div>
+        <div class="hero-img-box col-md-5">
+          <img
+            src="static/images/casjob_hero_final.png"
+            alt="Man working on electricity"
+            class="hero-img img-fluid"
+          />
+        </div>
       </div>
-      <div class="col-md-4">
-        <img src="static/images/b.jpg" alt="" class="about-img img-fluid" />
+    </section>
+    
+    <section class="features container px-4 px-md-0">
+      <h2 class="features-heading mb-5 text-center">Features</h2>
+    
+      <div
+        class="feature d-flex flex-column-reverse flex-md-row align-items-center justify-content-around mb-5"
+      >
+        <img
+          class="feature-img col-md-5 img-thumbnail img-fluid"
+          src="static/images/casjob_get_a_job.png"
+        />
+        <div class="feature-text col-md-5">
+          <h4 class="feature-text--title mb-3">Get a Job</h4>
+          <p class="feature-text--description mb-4">
+            Job seekers can browse through the available job listings on Casjob to
+            find positions that match their skills and preferences. The search
+            functionality allows users to filter jobs based on skill type, location,
+            and other criteria, enabling them to find relevant opportunities quickly
+            and easily.
+          </p>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    
+      <div
+        class="feature d-flex flex-column flex-md-row align-items-center justify-content-around mb-5"
+      >
+        <div class="feature-text col-md-5">
+          <h4 class="feature-text--title mb-3">One-Click Hiring</h4>
+          <p class="feature-text--description mb-4">
+            Employers have the ability to hire registered hires with just one click.
+            Once they find a suitable candidate, employers can initiate the hiring
+            process directly from the candidate's profile, streamlining the hiring
+            process and saving time.
+          </p>
+        </div>
+        <img
+          class="feature-img col-md-5 img-thumbnail img-fluid"
+          src="static/images/casjob_one_click_hiring.png"
+        />
+      </div>
+    
+      <div
+        class="feature d-flex flex-column-reverse flex-md-row align-items-center justify-content-around mb-5"
+      >
+        <img
+          class="feature-img col-md-5 img-thumbnail img-fluid"
+          src="static/images/casjob_post_a_job.png"
+        />
+        <div class="feature-text col-md-5">
+          <h4 class="feature-text--title mb-3">Post a Job</h4>
+          <p class="feature-text--description mb-4">
+            Casjob allows users to post job listings for various short-term contract
+            jobs. Users can provide detailed descriptions of the job requirements,
+            including skill type, job title, job description, and contact
+            information.
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <section class="about">
+      <h2 class="about-heading text-center mb-5">About Us</h2>
+      <div class="container">
+        <div
+          class="d-flex flex-column flex-md-row align-items-center justify-content-around"
+        >
+          <div class="about-text col-md-6">
+            <h3>
+              Casjob is your premier destination for connecting individuals seeking
+              casual employment with businesses looking to hire for short-term
+              positions.
+            </h3>
+            <h3>
+              At Casjob, we specialize in casual jobs across a variety of
+              industries, including mechanics, hairdressers, web developers, and
+              more. Whether you're a skilled professional looking for flexible work
+              or a business in need of temporary assistance, we've got you covered.
+            </h3>
+            <h3>
+              Join the Casjob community today and discover the perfect casual job.
+            </h3>
+          </div>
+          <div class="col-md-4">
+            <img src="static/images/b.jpg" alt="" class="about-img img-fluid" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    <!-- ======= Footer ======= -->
+  <!-- Footer -->
   <footer id="footer">
-
     <div class="footer-top">
       <div class="container">
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Casjob</h3>
-            <p>
-              A108 Adam Street <br>
-              Lagos,<br>
-              Nigeria <br><br>
-              <strong>Phone:</strong> +234 (0) 80 123 4567<br>
-              <strong>Email:</strong> hello@casjob.com<br>
-            </p>
-          </div>
-
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Join Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-          </div>
-
-        </div>
+        <!-- Footer content -->
       </div>
     </div>
 
     <div class="container d-md-flex py-4">
-
-      <div class="me-md-auto text-center text-md-start">
-        <div class="copyright">
-          &copy; Copyright <strong><span>Casjob</span></strong>. All Rights Reserved
-        </div>
-      </div>
-      <div class="social-links text-center text-md-right pt-3 pt-md-0">
-        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      </div>
+      <!-- Social links -->
     </div>
-  </footer><!-- End Footer -->
-    
+  </footer>
 
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+  <!-- JavaScript dependencies -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
 </html>
